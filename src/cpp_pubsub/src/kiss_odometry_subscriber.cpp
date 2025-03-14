@@ -294,7 +294,7 @@ void pointCloudCallback(const sensor_msgs::msg::PointCloud2::SharedPtr msg)
     }
     
     saveLaz("out.laz", points_global);
-
+//test
 }
 
 int main(int argc, char **argv)
