@@ -1,0 +1,20 @@
+<package format="3">
+  <name>cpp_pubsub</name>
+  <version>0.0.1</version>
+  <description>A simple ROS2 example for pub/sub</description>
+
+  <maintainer email="you@example.com">Your Name</maintainer>
+  <license>Apache-2.0</license>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>sensor_msgs</depend> 
+  <depend>PCL</depend>
+
+</package>
