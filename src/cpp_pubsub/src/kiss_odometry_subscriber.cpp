@@ -8,6 +8,9 @@
 #include <fstream> 
 #include <iostream>
 #include <string>
+#include <thread> 
+#include <filesystem>
+#include <nlohmann/json.hpp>
 
 struct Point3Di
 {
@@ -19,7 +22,24 @@ struct Point3Di
 	int index_point;
 };
 
+
+struct MeridianTrajectoryPose
+{
+    double timestamp_ns;
+    double x_m;
+    double y_m;
+    double z_m;
+    double qw;
+    double qx;
+    double qy;
+    double qz;
+};
+
+namespace fs = std::filesystem;
 std::vector<Point3Di> points_global;
+
+std::vector<MeridianTrajectoryPose> trajectory;
+std::vector<std::vector<MeridianTrajectoryPose>> chunks_trajectory;
 
 void saveOdometryDataToFile(const std::string &filename,
                              double x, double y, double z,
@@ -157,9 +177,6 @@ bool saveLaz(const std::string &filename, const std::vector<Point3Di> &points_gl
         const auto &p = points_global[i];
         point->intensity = p.intensity;
         point->gps_time = p.timestamp * 1e9;
-        // std::cout << p.timestamp << std::endl;
-        //  point->user_data = 0;//p.line_id;
-        //  point->classification = p.point.tag;
         p_count++;
         coordinates[0] = p.point.x();
         coordinates[1] = p.point.y();
@@ -236,6 +253,7 @@ bool save_poses(const std::string file_name, std::vector<Eigen::Affine3d> m_pose
 // Funkcja callback dla danych odometrycznych
 void odometryCallback(const nav_msgs::msg::Odometry::SharedPtr msg)
 {
+
     // Pobierz dane o pozycji
     double x = msg->pose.pose.position.x;
     double y = msg->pose.pose.position.y;
@@ -246,17 +264,37 @@ void odometryCallback(const nav_msgs::msg::Odometry::SharedPtr msg)
     double qy = msg->pose.pose.orientation.y;
     double qz = msg->pose.pose.orientation.z;
     double qw = msg->pose.pose.orientation.w;
+  
+    MeridianTrajectoryPose pose;
 
+    uint64_t sec_in_ms = static_cast<uint64_t>(msg->header.stamp.sec) * 1000ULL;
+    uint64_t ns_in_ms = static_cast<uint64_t>(msg->header.stamp.nanosec) / 1'000'000ULL;
+   // pose.timestamp_ns = msg->header.stamp.sec;
+    pose.timestamp_ns = sec_in_ms + ns_in_ms;
+    pose.x_m = msg->pose.pose.position.x;  
+    pose.y_m = msg->pose.pose.position.y;  
+    pose.z_m = msg->pose.pose.position.z;  
+    pose.qw = msg->pose.pose.orientation.w;  
+    pose.qx = msg->pose.pose.orientation.x;  
+    pose.qy = msg->pose.pose.orientation.y;  
+    pose.qz = msg->pose.pose.orientation.z;  
+    
+    trajectory.push_back(pose);
+    
+   // chunks_trajectory.push_back(trajectory);
+
+    RCLCPP_INFO(rclcpp::get_logger("pose_logger"), "Timestamp: %.9f", pose.timestamp_ns);
+    
     // Zapisz dane do pliku
-    saveOdometryDataToFile("odometry_data.csv", x, y, z, qx, qy, qz, qw);
+    //saveOdometryDataToFile("odometry_data.csv", x, y, z, qx, qy, qz, qw);
 
-    RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Otrzymano dane odometryczne:");
-    RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Pozycja: x = %f, y = %f, z = %f", 
-                msg->pose.pose.position.x, msg->pose.pose.position.y, msg->pose.pose.position.z);
-    RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Orientacja: qx = %f, qy = %f, qz = %f, qw = %f",
-                msg->pose.pose.orientation.x, msg->pose.pose.orientation.y, 
-                msg->pose.pose.orientation.z, msg->pose.pose.orientation.w);
-}
+//     RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Otrzymano dane odometryczne:");
+//     RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Pozycja: x = %f, y = %f, z = %f", 
+//                 msg->pose.pose.position.x, msg->pose.pose.position.y, msg->pose.pose.position.z);
+//     RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Orientacja: qx = %f, qy = %f, qz = %f, qw = %f",
+//                 msg->pose.pose.orientation.x, msg->pose.pose.orientation.y, 
+//                 msg->pose.pose.orientation.z, msg->pose.pose.orientation.w);
+ }
 
 void pointCloudCallback(const sensor_msgs::msg::PointCloud2::SharedPtr msg)
 {
@@ -267,6 +305,7 @@ void pointCloudCallback(const sensor_msgs::msg::PointCloud2::SharedPtr msg)
     uint8_t* data_ptr = msg->data.data();
     size_t point_step = msg->point_step;
 
+    int point_counter = 0;
     // Rozpakuj punkty z danych
     for (size_t i = 0; i < msg->width; ++i)
     {
@@ -278,23 +317,73 @@ void pointCloudCallback(const sensor_msgs::msg::PointCloud2::SharedPtr msg)
         point.z = *reinterpret_cast<float*>(data_ptr + i * point_step + 8);
 
         cloud.points.push_back(point);
+        
+        point_counter++;
+        // Point3Di point_global;
+        Point3Di point_local;
 
-        Point3Di point_global;
+        uint64_t sec_in_ms = static_cast<uint64_t>(msg->header.stamp.sec) * 1000ULL;
+        uint64_t ns_in_ms = static_cast<uint64_t>(msg->header.stamp.nanosec) / 1'000'000ULL;
+        // point_global.timestamp = sec_in_ms + ns_in_ms;
+        // //point_global.timestamp = msg->header.stamp.sec;
+        // point_global.point = Eigen::Vector3d(point.x, point.y, point.z);
+        // point_global.intensity = 0;
+        // point_global.index_pose = point_counter;
+        // point_global.lidarid = 1;
+        // point_global.index_point = point_counter;
+
+        //   // RCLCPP_INFO(rclcpp::get_logger("point"), "Timestamp: %.9f", point_global.timestamp );
+
+        // points_global.push_back(point_global);
+
+        point_global.timestamp = sec_in_ms + ns_in_ms;
+        //point_global.timestamp = msg->header.stamp.sec;
         point_global.point = Eigen::Vector3d(point.x, point.y, point.z);
+        point_global.intensity = 0;
+        point_global.index_pose = point_counter;
+        point_global.lidarid = 1;
+        point_global.index_point = point_counter;
+
+          // RCLCPP_INFO(rclcpp::get_logger("point"), "Timestamp: %.9f", point_global.timestamp );
+
         points_global.push_back(point_global);
-    }
 
-    RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Otrzymano %zu punktów z PointCloud2", cloud.points.size());
-
-    // Wyświetl pierwsze 5 punktów
-    for (size_t i = 0; i < cloud.points.size(); ++i)
-    {
-        RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Punkt %zu: x = %f, y = %f, z = %f", 
-                    i, cloud.points[i].x, cloud.points[i].y, cloud.points[i].z);
-    }
+        for (size_t i = 0; i < trajectory.size(); ++i) {
+            for (size_t j = 0; j < trajectory[i].size(); ++j) {
+                // Translacja i rotacja z trajektorii
+                Eigen::Vector3d trans_curr(trajectory[i][j].x_m, trajectory[i][j].y_m, trajectory[i][j].z_m);
+                Eigen::Quaterniond q_curr(trajectory[i][j].qw, trajectory[i][j].qx, trajectory[i][j].qy, trajectory[i][j].qz);
     
-    saveLaz("out.laz", points_global);
-//test3
+                // Tworzenie macierzy afinicznej
+                Eigen::Affine3d first_affine_curr = Eigen::Affine3d::Identity();
+                first_affine_curr.translation() = trans_curr;       // Translacja
+                first_affine_curr.linear() = q_curr.toRotationMatrix(); // Rotacja
+    
+                // Przekształcenie punktu lokalnego na globalny
+                Eigen::Vector3d point_global = first_affine_curr * point_local;
+    
+                // Zapisz wynik
+                points_global.push_back(point_global);
+    
+                // Wyświetlenie wyniku
+                std::cout << "Local point: " << point_local.transpose() 
+                          << " -> Global point: " << point_global.transpose() << std::endl;
+            }
+        }
+
+
+    }
+
+
+   // RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Otrzymano %zu punktów z PointCloud2", cloud.points.size());
+
+    // // Wyświetl pierwsze 5 punktów
+    // for (size_t i = 0; i < cloud.points.size(); ++i)
+    // {
+    //     RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Punkt %zu: x = %f, y = %f, z = %f", 
+    //                 i, cloud.points[i].x, cloud.points[i].y, cloud.points[i].z);
+    // }
+    
 }
 
 int main(int argc, char **argv)
@@ -307,16 +396,287 @@ int main(int argc, char **argv)
 
     // Subskrybujemy temat /kiss/odometry
     auto odom_sub = node->create_subscription<nav_msgs::msg::Odometry>(
-        "/kiss/odometry", 10000, odometryCallback);
+        "/kiss/odometry", 100, odometryCallback);
 
     // Subskrybujemy temat /kiss/pointcloud
     auto point_cloud_sub = node->create_subscription<sensor_msgs::msg::PointCloud2>(
-        "/kiss/frame", 10000, pointCloudCallback);
+        "/kiss/frame", 100, pointCloudCallback);
+    
+    // // Określenie liczby rdzeni CPU w systemie
+    unsigned int num_threads = std::thread::hardware_concurrency();
 
-    // Czekamy na wiadomości
-    rclcpp::spin(node);
+    // Fallback to default if hardware_concurrency returns 0
+    if (num_threads == 0) {
+        num_threads = 16;  // Fallback value
+    }
+    RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Using %u threads for executor", num_threads);
 
+    // // Create executor without options (Humble-style)
+    rclcpp::executors::MultiThreadedExecutor executor;
+
+    // // Dodajemy node do executor'a
+    executor.add_node(node);
+
+    executor.spin();
+ 
     // Zakończenie pracy z ROS2
     rclcpp::shutdown();
-    return 0;
+    // std::cout << std::setprecision(20);
+    std::cout << trajectory[0].timestamp_ns << std::endl;
+    std::cout << points_global[0].timestamp << std::endl;
+
+
+    std::cout << "start loading pc" << std::endl;
+    std::cout << "loading pc finished" << std::endl;
+
+    std::vector<std::vector<Point3Di>> chunks_pc;
+
+    int counter = 0;
+    std::vector<Point3Di> chunk;
+
+    for (int i = 0; i < points_global.size(); i++)
+    {
+        chunk.push_back(points_global[i]);
+
+        if (chunk.size() > 2000000)
+        {
+            counter++;
+            chunks_pc.push_back(chunk);
+            chunk.clear();
+            std::cout << "adding chunk [" << counter << "]" << std::endl;
+        }
+    }
+
+    // remaining pc
+    std::cout << "reamaining points: " << chunk.size() << std::endl;
+
+    if (chunk.size() > 100000)
+    {
+        chunks_pc.push_back(chunk);
+    }
+
+    std::cout << "cleaning points" << std::endl;
+    points_global.clear();
+    std::cout << "points cleaned" << std::endl;
+
+    /////////////////////////
+    std::cout << "start indexing chunks_trajectory" << std::endl;
+    chunks_trajectory.resize(chunks_pc.size());
+
+    for (int i = 0; i < trajectory.size(); i++)
+    {
+        if(i % 1000 == 0){
+            std::cout << "computing [" << i + 1 << "] of: " << trajectory.size() << std::endl;
+        }
+        for (int j = 0; j < chunks_pc.size(); j++)
+        {
+            if (chunks_pc[j].size() > 0)
+            {
+                if (trajectory[i].timestamp_ns >= chunks_pc[j][0].timestamp &&
+                    trajectory[i].timestamp_ns < chunks_pc[j][chunks_pc[j].size() - 1].timestamp)
+                {
+                    chunks_trajectory[j].push_back(trajectory[i]);
+                }
+            }
+        }
+    }
+
+    for (const auto &trj : chunks_trajectory)
+    {
+        std::cout << "number of trajectory elements: " << trj.size() << std::endl;
+    }
+
+    /////////////////////////
+    std::cout << "start transforming chunks_pc to local coordinate system" << std::endl;
+    for (int i = 0; i < chunks_pc.size(); i++)
+    {
+        std::cout << "computing [" << i + 1 << "] of: " << chunks_pc.size() << std::endl;
+        // auto m_inv = chunks_trajectory[i][0].
+        if (chunks_trajectory[i].size() == 0){
+            continue;
+        }
+
+        Eigen::Vector3d trans(chunks_trajectory[i][0].x_m, chunks_trajectory[i][0].y_m, chunks_trajectory[i][0].z_m);
+        Eigen::Quaterniond q(chunks_trajectory[i][0].qw, chunks_trajectory[i][0].qx, chunks_trajectory[i][0].qy, chunks_trajectory[i][0].qz);
+
+        Eigen::Affine3d first_affine = Eigen::Affine3d::Identity();
+        first_affine.translation() = trans;
+        first_affine.linear() = q.toRotationMatrix();
+
+        Eigen::Affine3d first_affine_inv = first_affine.inverse();
+
+        for (auto &p : chunks_pc[i])
+        {
+            p.point = first_affine_inv * p.point;
+            // std::cout << p.point << std::endl;
+        }
+    }
+
+    ////////////////////////
+    fs::path outwd = "/home/robot/datasets";
+
+    Eigen::Vector3d offset(0, 0, 0); // --obliczyc
+    int cc = 0;
+    for (int i = 0; i < chunks_trajectory.size(); i++)
+    {
+        for (int j = 0; j < chunks_trajectory[i].size(); j++)
+        {
+            Eigen::Vector3d trans_curr(chunks_trajectory[i][j].x_m, chunks_trajectory[i][j].y_m, chunks_trajectory[i][j].z_m);
+            offset += trans_curr;
+            cc++;
+        }
+    }
+    offset /= cc;
+
+    std::vector<Eigen::Affine3d>
+        m_poses;
+    std::vector<std::string> file_names;
+
+    for (int i = 0; i < chunks_pc.size(); i++)
+    {
+        if (chunks_pc[i].size() == 0){
+            continue;
+        }
+        if (chunks_trajectory[i].size() == 0)
+        {
+            continue;
+        }
+
+        fs::path path(outwd);
+        std::string filename = ("scan_lio_" + std::to_string(i) + ".laz");
+        path /= filename;
+        std::cout << "saving to: " << path << " number of points: " << chunks_pc[i].size() << std::endl;
+        saveLaz(path.string(), chunks_pc[i]);
+        file_names.push_back(filename);
+
+        std::string trajectory_filename = ("trajectory_lio_" + std::to_string(i) + ".csv");
+        fs::path pathtrj(outwd);
+        pathtrj /= trajectory_filename;
+        std::cout << "saving to: " << pathtrj << std::endl;
+
+        std::ofstream outfile;
+        outfile.open(pathtrj);
+        if (!outfile.good())
+        {
+            std::cout << "can not save file: " << pathtrj << std::endl;
+            return 1;
+        }
+
+       outfile << "timestamp_ns, x_m, y_m, z_m, qw, qx, qy, qz" << std::endl;
+
+        Eigen::Vector3d trans(chunks_trajectory[i][0].x_m, chunks_trajectory[i][0].y_m, chunks_trajectory[i][0].z_m);
+        Eigen::Quaterniond q(chunks_trajectory[i][0].qw, chunks_trajectory[i][0].qx, chunks_trajectory[i][0].qy, chunks_trajectory[i][0].qz);
+
+        Eigen::Affine3d first_affine = Eigen::Affine3d::Identity();
+        first_affine.translation() = trans;
+        first_affine.linear() = q.toRotationMatrix();
+
+        Eigen::Affine3d first_affine_inv = first_affine.inverse();
+        m_poses.push_back(first_affine);
+
+        for (int j = 0; j < chunks_trajectory[i].size(); j++)
+        {
+            Eigen::Vector3d trans_curr(chunks_trajectory[i][j].x_m, chunks_trajectory[i][j].y_m, chunks_trajectory[i][j].z_m);
+            Eigen::Quaterniond q_curr(chunks_trajectory[i][j].qw, chunks_trajectory[i][j].qx, chunks_trajectory[i][j].qy, chunks_trajectory[i][j].qz);
+
+            Eigen::Affine3d first_affine_curr = Eigen::Affine3d::Identity();
+            first_affine_curr.translation() = trans_curr;
+            first_affine_curr.linear() = q_curr.toRotationMatrix();
+
+            auto pose = first_affine_inv * first_affine_curr;
+            // auto pose = worker_data_concatenated[i].intermediate_trajectory[0].inverse() * worker_data_concatenated[i].intermediate_trajectory[j];
+
+            outfile
+                << std::setprecision(20) << chunks_trajectory[i][j].timestamp_ns * 1e9 << " " << std::setprecision(10)
+                // << pose(0, 0) << " "
+                // << pose(0, 1) << " "
+                // << pose(0, 2) << " "
+                // << pose(0, 3) << " "
+                // << pose(1, 0) << " "
+                // << pose(1, 1) << " "
+                // << pose(1, 2) << " "
+                // << pose(1, 3) << " "
+                // << pose(2, 0) << " "
+                // << pose(2, 1) << " "
+                // << pose(2, 2) << " "
+                // << pose(2, 3) << " "
+                // << 0 << " "
+                // << 0 << " "
+                // << 0 << " "
+                << chunks_trajectory[i][j].x_m << " "  // x
+                << chunks_trajectory[i][j].y_m << " "  // y
+                << chunks_trajectory[i][j].z_m << " "  // z
+                << chunks_trajectory[i][j].qw << " "   // qw
+                << chunks_trajectory[i][j].qx << " "   // qx
+                << chunks_trajectory[i][j].qy << " "   // qy
+                << chunks_trajectory[i][j].qz << " "   // qz
+                << std::endl;
+        }
+        outfile.close();
+    }
+
+    for (auto &m : m_poses)
+    {
+        m.translation() -= offset;
+    }
+
+    fs::path path(outwd);
+    path /= "lio_initial_poses.reg";
+    save_poses(path.string(), m_poses, file_names);
+    fs::path path2(outwd);
+    path2 /= "poses.reg";
+    save_poses(path2.string(), m_poses, file_names);
+
+    fs::path path3(outwd);
+    path3 /= "session.json";
+
+    // save session file
+    std::cout << "saving file: '" << path3 << "'" << std::endl;
+
+    nlohmann::json jj;
+    nlohmann::json j;
+
+    j["offset_x"] = 0;
+    j["offset_y"] = 0;
+    j["offset_z"] = 0;
+    j["offset_moli_x"] = offset.x();
+    j["offset_moli_y"] = offset.y();
+    j["offset_moli_z"] = offset.z();
+    j["folder_name"] = outwd;
+    j["out_folder_name"] = outwd;
+    j["poses_file_name"] = path2.string();
+    j["initial_poses_file_name"] = path.string();
+    j["out_poses_file_name"] = path2.string();
+    j["lidar_odometry_version"] = "MOLI";
+
+    jj["Session Settings"] = j;
+
+    nlohmann::json jlaz_file_names;
+    for (int i = 0; i < chunks_pc.size(); i++)
+    {
+        if (chunks_pc[i].size() == 0)
+        {
+            continue;
+        }
+        if (chunks_trajectory[i].size() == 0)
+        {
+            continue;
+        }
+        
+        fs::path path(outwd);
+        std::string filename = ("scan_lio_" + std::to_string(i) + ".laz");
+        path /= filename;
+        std::cout << "adding file: " << path << std::endl;
+
+        nlohmann::json jfn{
+            {"file_name", path.string()}};
+        jlaz_file_names.push_back(jfn);
+    }
+    jj["laz_file_names"] = jlaz_file_names;
+
+    std::ofstream fs(path3.string());
+    fs << jj.dump(2);
+    fs.close();
+
+return 0;
 }
