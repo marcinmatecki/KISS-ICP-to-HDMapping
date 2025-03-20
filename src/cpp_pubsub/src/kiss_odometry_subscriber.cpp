@@ -319,23 +319,9 @@ void pointCloudCallback(const sensor_msgs::msg::PointCloud2::SharedPtr msg)
         cloud.points.push_back(point);
         
         point_counter++;
-        // Point3Di point_global;
-        Point3Di point_local;
-
+        Point3Di point_global;
         uint64_t sec_in_ms = static_cast<uint64_t>(msg->header.stamp.sec) * 1000ULL;
         uint64_t ns_in_ms = static_cast<uint64_t>(msg->header.stamp.nanosec) / 1'000'000ULL;
-        // point_global.timestamp = sec_in_ms + ns_in_ms;
-        // //point_global.timestamp = msg->header.stamp.sec;
-        // point_global.point = Eigen::Vector3d(point.x, point.y, point.z);
-        // point_global.intensity = 0;
-        // point_global.index_pose = point_counter;
-        // point_global.lidarid = 1;
-        // point_global.index_point = point_counter;
-
-        //   // RCLCPP_INFO(rclcpp::get_logger("point"), "Timestamp: %.9f", point_global.timestamp );
-
-        // points_global.push_back(point_global);
-
         point_global.timestamp = sec_in_ms + ns_in_ms;
         //point_global.timestamp = msg->header.stamp.sec;
         point_global.point = Eigen::Vector3d(point.x, point.y, point.z);
@@ -343,34 +329,10 @@ void pointCloudCallback(const sensor_msgs::msg::PointCloud2::SharedPtr msg)
         point_global.index_pose = point_counter;
         point_global.lidarid = 1;
         point_global.index_point = point_counter;
-
-          // RCLCPP_INFO(rclcpp::get_logger("point"), "Timestamp: %.9f", point_global.timestamp );
+   
+       // RCLCPP_INFO(rclcpp::get_logger("point"), "Timestamp: %.9f", point_global.timestamp );
 
         points_global.push_back(point_global);
-
-        for (size_t i = 0; i < trajectory.size(); ++i) {
-            for (size_t j = 0; j < trajectory[i].size(); ++j) {
-                // Translacja i rotacja z trajektorii
-                Eigen::Vector3d trans_curr(trajectory[i][j].x_m, trajectory[i][j].y_m, trajectory[i][j].z_m);
-                Eigen::Quaterniond q_curr(trajectory[i][j].qw, trajectory[i][j].qx, trajectory[i][j].qy, trajectory[i][j].qz);
-    
-                // Tworzenie macierzy afinicznej
-                Eigen::Affine3d first_affine_curr = Eigen::Affine3d::Identity();
-                first_affine_curr.translation() = trans_curr;       // Translacja
-                first_affine_curr.linear() = q_curr.toRotationMatrix(); // Rotacja
-    
-                // Przekształcenie punktu lokalnego na globalny
-                Eigen::Vector3d point_global = first_affine_curr * point_local;
-    
-                // Zapisz wynik
-                points_global.push_back(point_global);
-    
-                // Wyświetlenie wyniku
-                std::cout << "Local point: " << point_local.transpose() 
-                          << " -> Global point: " << point_global.transpose() << std::endl;
-            }
-        }
-
 
     }
 
