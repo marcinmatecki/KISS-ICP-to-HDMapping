@@ -22,7 +22,6 @@ struct Point3Di
 	int index_point;
 };
 
-
 struct MeridianTrajectoryPose
 {
     double timestamp_ns;
@@ -253,13 +252,10 @@ bool save_poses(const std::string file_name, std::vector<Eigen::Affine3d> m_pose
 // Funkcja callback dla danych odometrycznych
 void odometryCallback(const nav_msgs::msg::Odometry::SharedPtr msg)
 {
-
-    // Pobierz dane o pozycji
     double x = msg->pose.pose.position.x;
     double y = msg->pose.pose.position.y;
     double z = msg->pose.pose.position.z;
 
-    // Pobierz dane o orientacji (kwaternion)
     double qx = msg->pose.pose.orientation.x;
     double qy = msg->pose.pose.orientation.y;
     double qz = msg->pose.pose.orientation.z;
@@ -373,7 +369,7 @@ int main(int argc, char **argv)
     }
     RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Using %u threads for executor", num_threads);
 
-    // // Create executor without options (Humble-style)
+    // // Create executor without options
     rclcpp::executors::MultiThreadedExecutor executor;
 
     // // Dodajemy node do executor'a
@@ -387,10 +383,10 @@ int main(int argc, char **argv)
     std::cout << trajectory[0].timestamp_ns << std::endl;
     std::cout << points_global[0].timestamp << std::endl;
 
-    // std::cout << "zamiana pukntów" << std::endl;
+    // std::cout << "zamiana punktów" << std::endl;
 
     // std::vector<Eigen::Affine3d> global_trajectory;
-    // Eigen::Affine3d global_transform = Eigen::Affine3d::Identity(); // Startowa pozycja
+    // Eigen::Affine3d global_transform = Eigen::Affine3d::Identity(); 
     
     // for (size_t i = 0; i < trajectory.size(); ++i) {
     //     // Pobranie lokalnej transformacji
