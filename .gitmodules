@@ -1,0 +1,6 @@
+[submodule "/src/kiss-icp"]
+	path = /src/kiss-icp
+	url = https://github.com/PRBonn/kiss-icp.git
+[submodule "3rdparty/LASzip"]
+	path = /src/cpp/pubsub/3rdparty/LASzip
+	url = https://github.com/LASzip/LASzip.git
