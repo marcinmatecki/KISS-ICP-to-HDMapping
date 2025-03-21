@@ -387,6 +387,30 @@ int main(int argc, char **argv)
     std::cout << trajectory[0].timestamp_ns << std::endl;
     std::cout << points_global[0].timestamp << std::endl;
 
+    // std::cout << "zamiana pukntów" << std::endl;
+
+    // std::vector<Eigen::Affine3d> global_trajectory;
+    // Eigen::Affine3d global_transform = Eigen::Affine3d::Identity(); // Startowa pozycja
+    
+    // for (size_t i = 0; i < trajectory.size(); ++i) {
+    //     // Pobranie lokalnej transformacji
+    //     Eigen::Vector3d trans_local(trajectory[i].x_m, trajectory[i].y_m, trajectory[i].z_m);
+    //     Eigen::Quaterniond q_local(trajectory[i].qw, trajectory[i].qx, trajectory[i].qy, trajectory[i].qz);
+    
+    //     Eigen::Affine3d local_transform = Eigen::Affine3d::Identity();
+    //     local_transform.translation() = trans_local;
+    //     local_transform.linear() = q_local.toRotationMatrix();
+    
+    //     // Kumulacja transformacji (przemnażanie macierzy)
+    //     global_transform = global_transform * local_transform;
+    
+    //     // Zapisz globalną transformację
+    //     global_trajectory.push_back(global_transform);
+    // }
+
+    // for (size_t i = 0; i < points_global.size() && i < global_trajectory.size(); ++i) {
+    //     points_global[i].point = global_trajectory[i] * points_global[i].point;
+    // }
 
     std::cout << "start loading pc" << std::endl;
     std::cout << "loading pc finished" << std::endl;
@@ -412,7 +436,7 @@ int main(int argc, char **argv)
     // remaining pc
     std::cout << "reamaining points: " << chunk.size() << std::endl;
 
-    if (chunk.size() > 100000)
+    if (chunk.size() > 1000000)
     {
         chunks_pc.push_back(chunk);
     }
@@ -598,9 +622,9 @@ int main(int argc, char **argv)
     nlohmann::json jj;
     nlohmann::json j;
 
-    j["offset_x"] = 0;
-    j["offset_y"] = 0;
-    j["offset_z"] = 0;
+    j["offset_x"] = 0.0;
+    j["offset_y"] = 0.0;
+    j["offset_z"] = 0.0;
     j["offset_moli_x"] = offset.x();
     j["offset_moli_y"] = offset.y();
     j["offset_moli_z"] = offset.z();
