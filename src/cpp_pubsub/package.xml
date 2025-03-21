@@ -1,14 +1,17 @@
+<?xml version="1.0"?>
 <package format="3">
   <name>cpp_pubsub</name>
-  <version>0.0.1</version>
-  <description>A simple ROS2 example for pub/sub</description>
+  <version>0.0.0</version>
+  <description>bag-kiss-bag-session convert</description>
 
-  <maintainer email="you@example.com">Your Name</maintainer>
-  <license>Apache-2.0</license>
+  <maintainer email="matecki.m@outlook.com">Marcin Matecki</maintainer>
+  <!-- One license tag required, multiple allowed, one license per tag -->
+  <!-- Commonly used license strings: -->
+  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
+  <license>MIT</license>
 
-  <export>
-    <build_type>ament_cmake</build_type>
-  </export>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
 
   <depend>rclcpp</depend>
   <depend>std_msgs</depend>
@@ -17,4 +20,9 @@
   <depend>sensor_msgs</depend> 
   <depend>PCL</depend>
   <depend>rosbag2_cpp</depend>
+  <depend>message_generation</depend>
+  
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
 </package>

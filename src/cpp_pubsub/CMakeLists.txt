@@ -53,3 +53,5 @@ ament_target_dependencies(listener rclcpp nav_msgs geometry_msgs sensor_msgs PCL
 install(TARGETS
   listener
   DESTINATION lib/${PROJECT_NAME})
+
+ament_package()
