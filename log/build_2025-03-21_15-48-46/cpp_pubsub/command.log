@@ -1,4 +1,0 @@
-Invoking command in '/home/robot/ros2_ws/build/cpp_pubsub': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/robot/ros2_ws/build/cpp_pubsub -- -j24 -l24
-Invoked command in '/home/robot/ros2_ws/build/cpp_pubsub' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/robot/ros2_ws/build/cpp_pubsub -- -j24 -l24
-Invoking command in '/home/robot/ros2_ws/build/cpp_pubsub': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/robot/ros2_ws/build/cpp_pubsub
-Invoked command in '/home/robot/ros2_ws/build/cpp_pubsub' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/robot/ros2_ws/build/cpp_pubsub

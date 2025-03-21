@@ -1,9 +1,0 @@
-[0.025s] Invoking command in '/home/robot/ros2_ws/build/cpp_pubsub': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/robot/ros2_ws/build/cpp_pubsub -- -j24 -l24
-[0.126s] [  7%] Built target laszip_api
-[0.143s] [ 92%] Built target laszip
-[0.173s] [35m[1mConsolidate compiler generated dependencies of target listener[0m
-[0.220s] [ 96%] [32mBuilding CXX object CMakeFiles/listener.dir/src/kiss_odometry_subscriber.cpp.o[0m
-[3.850s] gmake[2]: *** [CMakeFiles/listener.dir/build.make:76: CMakeFiles/listener.dir/src/kiss_odometry_subscriber.cpp.o] Interrupt
-[3.851s] gmake[1]: *** [CMakeFiles/Makefile2:188: CMakeFiles/listener.dir/all] Interrupt
-[3.851s] gmake: *** [Makefile:166: all] Interrupt
-[3.885s] Invoked command in '/home/robot/ros2_ws/build/cpp_pubsub' returned '-2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/robot/ros2_ws/build/cpp_pubsub -- -j24 -l24

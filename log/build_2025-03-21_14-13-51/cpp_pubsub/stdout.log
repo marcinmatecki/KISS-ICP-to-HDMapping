@@ -1,6 +1,0 @@
-[35m[1mConsolidate compiler generated dependencies of target laszip_api[0m
-[35m[1mConsolidate compiler generated dependencies of target laszip[0m
-[  7%] Built target laszip_api
-[ 92%] Built target laszip
-[35m[1mConsolidate compiler generated dependencies of target listener[0m
-[ 96%] [32mBuilding CXX object CMakeFiles/listener.dir/src/kiss_odometry_subscriber.cpp.o[0m

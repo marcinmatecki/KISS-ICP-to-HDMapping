@@ -1,7 +1,0 @@
-[  7%] Built target laszip_api
-[ 92%] Built target laszip
-[35m[1mConsolidate compiler generated dependencies of target listener[0m
-[ 96%] [32mBuilding CXX object CMakeFiles/listener.dir/src/kiss_odometry_subscriber.cpp.o[0m
-gmake[2]: *** [CMakeFiles/listener.dir/build.make:76: CMakeFiles/listener.dir/src/kiss_odometry_subscriber.cpp.o] Interrupt
-gmake[1]: *** [CMakeFiles/Makefile2:188: CMakeFiles/listener.dir/all] Interrupt
-gmake: *** [Makefile:166: all] Interrupt
