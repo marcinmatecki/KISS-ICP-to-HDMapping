@@ -1,0 +1,68 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install",
+			"LASZIP_ADD_LIBRARY"
+		],
+		"files" : 
+		[
+			"src/3rdparty/LASzip/cmake/macros.cmake",
+			"src/3rdparty/LASzip/src/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 82,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 69,
+				"parent" : 1
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"src/3rdparty/LASzip/lib/liblaszip.so.8.0.6",
+				"src/3rdparty/LASzip/lib/liblaszip.so.8"
+			],
+			"targetId" : "laszip::@643dba450037bbd91dd1",
+			"targetIndex" : 2,
+			"targetInstallNamelink" : "skip",
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"src/3rdparty/LASzip/lib/liblaszip.so"
+			],
+			"targetId" : "laszip::@643dba450037bbd91dd1",
+			"targetIndex" : 2,
+			"targetInstallNamelink" : "only",
+			"type" : "target"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "src/3rdparty/LASzip/src",
+		"source" : "src/3rdparty/LASzip/src"
+	}
+}

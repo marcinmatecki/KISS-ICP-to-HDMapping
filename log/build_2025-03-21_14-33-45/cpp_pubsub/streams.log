@@ -1,0 +1,484 @@
+[0.024s] Invoking command in '/home/robot/ros2_ws/build/cpp_pubsub': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/robot/ros2_ws/build/cpp_pubsub -- -j24 -l24
+[0.123s] [  7%] Built target laszip_api
+[0.141s] [ 92%] Built target laszip
+[0.170s] [35m[1mConsolidate compiler generated dependencies of target listener[0m
+[0.216s] [ 96%] [32mBuilding CXX object CMakeFiles/listener.dir/src/kiss_odometry_subscriber.cpp.o[0m
+[8.787s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[8.788s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[8.788s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:241:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[8.788s]   241 |     struct [01;35m[K{[m[K \
+[8.788s]       |            [01;35m[K^[m[K
+[8.789s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:259:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_POINT4D[m[K’
+[8.789s]   259 |   [01;36m[KPCL_ADD_UNION_POINT4D[m[K \
+[8.789s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[8.790s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:337:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_POINT4D[m[K’
+[8.790s]   337 |     [01;36m[KPCL_ADD_POINT4D[m[K; // This adds the members x,y,z which can also be accessed using the point (which is float[4])
+[8.790s]       |     [01;36m[K^~~~~~~~~~~~~~~[m[K
+[8.983s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:289:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[8.983s]   289 |       [01;35m[K{[m[K \
+[8.983s]       |       [01;35m[K^[m[K
+[8.983s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:313:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_RGB[m[K’
+[8.983s]   313 |   [01;36m[KPCL_ADD_UNION_RGB[m[K \
+[8.983s]       |   [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[8.984s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:368:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_RGB[m[K’
+[8.984s]   368 |     [01;36m[KPCL_ADD_RGB[m[K;
+[8.984s]       |     [01;36m[K^~~~~~~~~~~[m[K
+[9.164s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.164s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.165s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:318:5:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.165s]   318 |     [01;35m[K{[m[K \
+[9.165s]       |     [01;35m[K^[m[K
+[9.165s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:411:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_INTENSITY[m[K’
+[9.165s]   411 |     [01;36m[KPCL_ADD_INTENSITY[m[K;
+[9.166s]       |     [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[9.166s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:411:22:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.166s]   411 |     PCL_ADD_INTENSITY[01;35m[K;[m[K
+[9.166s]       |                      [01;35m[K^[m[K
+[9.166s]       |                      [31m[K-[m[K
+[9.167s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:324:5:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.167s]   324 |     [01;35m[K{[m[K \
+[9.167s]       |     [01;35m[K^[m[K
+[9.167s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:437:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_INTENSITY_8U[m[K’
+[9.167s]   437 |     [01;36m[KPCL_ADD_INTENSITY_8U[m[K;
+[9.167s]       |     [01;36m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[9.168s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:437:25:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.168s]   437 |     PCL_ADD_INTENSITY_8U[01;35m[K;[m[K
+[9.168s]       |                         [01;35m[K^[m[K
+[9.168s]       |                         [31m[K-[m[K
+[9.168s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:330:5:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.168s]   330 |     [01;35m[K{[m[K \
+[9.168s]       |     [01;35m[K^[m[K
+[9.169s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:469:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_INTENSITY_32U[m[K’
+[9.169s]   469 |     [01;36m[KPCL_ADD_INTENSITY_32U[m[K;
+[9.169s]       |     [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[9.169s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:469:26:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.169s]   469 |     PCL_ADD_INTENSITY_32U[01;35m[K;[m[K
+[9.169s]       |                          [01;35m[K^[m[K
+[9.169s]       |                          [31m[K-[m[K
+[9.169s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.170s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.170s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:241:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.170s]   241 |     struct [01;35m[K{[m[K \
+[9.170s]       |            [01;35m[K^[m[K
+[9.170s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:259:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_POINT4D[m[K’
+[9.170s]   259 |   [01;36m[KPCL_ADD_UNION_POINT4D[m[K \
+[9.170s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[9.171s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:497:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_POINT4D[m[K’
+[9.171s]   497 |     [01;36m[KPCL_ADD_POINT4D[m[K; // This adds the members x,y,z which can also be accessed using the point (which is float[4])
+[9.171s]       |     [01;36m[K^~~~~~~~~~~~~~~[m[K
+[9.171s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.171s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.171s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:501:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.171s]   501 |       [01;35m[K{[m[K
+[9.172s]       |       [01;35m[K^[m[K
+[9.172s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.172s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.172s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:241:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.172s]   241 |     struct [01;35m[K{[m[K \
+[9.172s]       |            [01;35m[K^[m[K
+[9.172s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:259:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_POINT4D[m[K’
+[9.172s]   259 |   [01;36m[KPCL_ADD_UNION_POINT4D[m[K \
+[9.173s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[9.173s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:533:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_POINT4D[m[K’
+[9.173s]   533 |     [01;36m[KPCL_ADD_POINT4D[m[K; // This adds the members x,y,z which can also be accessed using the point (which is float[4])
+[9.173s]       |     [01;36m[K^~~~~~~~~~~~~~~[m[K
+[9.173s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:241:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.173s]   241 |     struct [01;35m[K{[m[K \
+[9.173s]       |            [01;35m[K^[m[K
+[9.173s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:259:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_POINT4D[m[K’
+[9.174s]   259 |   [01;36m[KPCL_ADD_UNION_POINT4D[m[K \
+[9.174s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[9.174s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:573:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_POINT4D[m[K’
+[9.174s]   573 |     [01;36m[KPCL_ADD_POINT4D[m[K; // This adds the members x,y,z which can also be accessed using the point (which is float[4])
+[9.174s]       |     [01;36m[K^~~~~~~~~~~~~~~[m[K
+[9.174s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:289:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.174s]   289 |       [01;35m[K{[m[K \
+[9.175s]       |       [01;35m[K^[m[K
+[9.175s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:313:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_RGB[m[K’
+[9.175s]   313 |   [01;36m[KPCL_ADD_UNION_RGB[m[K \
+[9.175s]       |   [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[9.175s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:574:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_RGB[m[K’
+[9.175s]   574 |     [01;36m[KPCL_ADD_RGB[m[K;
+[9.175s]       |     [01;36m[K^~~~~~~~~~~[m[K
+[9.176s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:241:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.176s]   241 |     struct [01;35m[K{[m[K \
+[9.176s]       |            [01;35m[K^[m[K
+[9.176s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:259:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_POINT4D[m[K’
+[9.176s]   259 |   [01;36m[KPCL_ADD_UNION_POINT4D[m[K \
+[9.176s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[9.176s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:629:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_POINT4D[m[K’
+[9.176s]   629 |     [01;36m[KPCL_ADD_POINT4D[m[K; // This adds the members x,y,z which can also be accessed using the point (which is float[4])
+[9.177s]       |     [01;36m[K^~~~~~~~~~~~~~~[m[K
+[9.177s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:289:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.177s]   289 |       [01;35m[K{[m[K \
+[9.177s]       |       [01;35m[K^[m[K
+[9.177s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:313:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_RGB[m[K’
+[9.178s]   313 |   [01;36m[KPCL_ADD_UNION_RGB[m[K \
+[9.178s]       |   [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[9.178s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:630:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_RGB[m[K’
+[9.178s]   630 |     [01;36m[KPCL_ADD_RGB[m[K;
+[9.178s]       |     [01;36m[K^~~~~~~~~~~[m[K
+[9.178s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:241:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.178s]   241 |     struct [01;35m[K{[m[K \
+[9.179s]       |            [01;35m[K^[m[K
+[9.179s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:259:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_POINT4D[m[K’
+[9.179s]   259 |   [01;36m[KPCL_ADD_UNION_POINT4D[m[K \
+[9.179s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[9.179s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:636:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_POINT4D[m[K’
+[9.179s]   636 |     [01;36m[KPCL_ADD_POINT4D[m[K; // This adds the members x,y,z which can also be accessed using the point (which is float[4])
+[9.179s]       |     [01;36m[K^~~~~~~~~~~~~~~[m[K
+[9.179s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:289:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.180s]   289 |       [01;35m[K{[m[K \
+[9.180s]       |       [01;35m[K^[m[K
+[9.180s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:313:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_RGB[m[K’
+[9.180s]   313 |   [01;36m[KPCL_ADD_UNION_RGB[m[K \
+[9.180s]       |   [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[9.180s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:637:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_RGB[m[K’
+[9.180s]   637 |     [01;36m[KPCL_ADD_RGB[m[K;
+[9.180s]       |     [01;36m[K^~~~~~~~~~~[m[K
+[9.182s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:241:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.182s]   241 |     struct [01;35m[K{[m[K \
+[9.182s]       |            [01;35m[K^[m[K
+[9.183s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:259:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_POINT4D[m[K’
+[9.183s]   259 |   [01;36m[KPCL_ADD_UNION_POINT4D[m[K \
+[9.183s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[9.183s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:741:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_POINT4D[m[K’
+[9.183s]   741 |     [01;36m[KPCL_ADD_POINT4D[m[K; // this adds the members x,y,z
+[9.183s]       |     [01;36m[K^~~~~~~~~~~~~~~[m[K
+[9.183s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.183s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.184s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:745:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.184s]   745 |       [01;35m[K{[m[K
+[9.184s]       |       [01;35m[K^[m[K
+[9.184s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.184s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.185s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:241:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.185s]   241 |     struct [01;35m[K{[m[K \
+[9.185s]       |            [01;35m[K^[m[K
+[9.185s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:259:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_POINT4D[m[K’
+[9.185s]   259 |   [01;36m[KPCL_ADD_UNION_POINT4D[m[K \
+[9.185s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[9.185s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:782:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_POINT4D[m[K’
+[9.186s]   782 |     [01;36m[KPCL_ADD_POINT4D[m[K;    // This adds the members x,y,z which can also be accessed using the point (which is float[4])
+[9.186s]       |     [01;36m[K^~~~~~~~~~~~~~~[m[K
+[9.186s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.186s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.186s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:786:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.186s]   786 |       [01;35m[K{[m[K
+[9.186s]       |       [01;35m[K^[m[K
+[9.187s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.187s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.188s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:241:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.188s]   241 |     struct [01;35m[K{[m[K \
+[9.188s]       |            [01;35m[K^[m[K
+[9.188s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:259:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_POINT4D[m[K’
+[9.188s]   259 |   [01;36m[KPCL_ADD_UNION_POINT4D[m[K \
+[9.188s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[9.189s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:867:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_POINT4D[m[K’
+[9.189s]   867 |     [01;36m[KPCL_ADD_POINT4D[m[K; // This adds the members x,y,z which can also be accessed using the point (which is float[4])
+[9.189s]       |     [01;36m[K^~~~~~~~~~~~~~~[m[K
+[9.189s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.189s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.189s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:871:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.189s]   871 |       [01;35m[K{[m[K
+[9.190s]       |       [01;35m[K^[m[K
+[9.190s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.190s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.190s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:266:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.190s]   266 |     struct [01;35m[K{[m[K \
+[9.190s]       |            [01;35m[K^[m[K
+[9.191s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:280:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_NORMAL4D[m[K’
+[9.191s]   280 |   [01;36m[KPCL_ADD_UNION_NORMAL4D[m[K \
+[9.191s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[9.191s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:883:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_NORMAL4D[m[K’
+[9.191s]   883 |     [01;36m[KPCL_ADD_NORMAL4D[m[K; // This adds the member normal[3] which can also be accessed using the point (which is float[4])
+[9.191s]       |     [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[9.191s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.192s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.192s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:887:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.192s]   887 |       [01;35m[K{[m[K
+[9.192s]       |       [01;35m[K^[m[K
+[9.192s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.193s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.193s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:266:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.193s]   266 |     struct [01;35m[K{[m[K \
+[9.193s]       |            [01;35m[K^[m[K
+[9.193s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:280:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_NORMAL4D[m[K’
+[9.193s]   280 |   [01;36m[KPCL_ADD_UNION_NORMAL4D[m[K \
+[9.193s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[9.193s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:924:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_NORMAL4D[m[K’
+[9.193s]   924 |     [01;36m[KPCL_ADD_NORMAL4D[m[K;
+[9.194s]       |     [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[9.194s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:241:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.194s]   241 |     struct [01;35m[K{[m[K \
+[9.194s]       |            [01;35m[K^[m[K
+[9.194s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:259:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_POINT4D[m[K’
+[9.194s]   259 |   [01;36m[KPCL_ADD_UNION_POINT4D[m[K \
+[9.194s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[9.195s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:955:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_POINT4D[m[K’
+[9.195s]   955 |     [01;36m[KPCL_ADD_POINT4D[m[K; // This adds the members x,y,z which can also be accessed using the point (which is float[4])
+[9.195s]       |     [01;36m[K^~~~~~~~~~~~~~~[m[K
+[9.195s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:266:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.196s]   266 |     struct [01;35m[K{[m[K \
+[9.196s]       |            [01;35m[K^[m[K
+[9.196s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:280:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_NORMAL4D[m[K’
+[9.196s]   280 |   [01;36m[KPCL_ADD_UNION_NORMAL4D[m[K \
+[9.196s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[9.196s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:956:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_NORMAL4D[m[K’
+[9.196s]   956 |     [01;36m[KPCL_ADD_NORMAL4D[m[K; // This adds the member normal[3] which can also be accessed using the point (which is float[4])
+[9.197s]       |     [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[9.197s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.197s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.197s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:960:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.197s]   960 |       [01;35m[K{[m[K
+[9.197s]       |       [01;35m[K^[m[K
+[9.197s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.198s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.198s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:241:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.198s]   241 |     struct [01;35m[K{[m[K \
+[9.198s]       |            [01;35m[K^[m[K
+[9.198s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:259:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_POINT4D[m[K’
+[9.198s]   259 |   [01;36m[KPCL_ADD_UNION_POINT4D[m[K \
+[9.198s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[9.198s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1001:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_POINT4D[m[K’
+[9.199s]  1001 |     [01;36m[KPCL_ADD_POINT4D[m[K; // This adds the members x,y,z which can also be accessed using the point (which is float[4])
+[9.199s]       |     [01;36m[K^~~~~~~~~~~~~~~[m[K
+[9.199s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:266:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.199s]   266 |     struct [01;35m[K{[m[K \
+[9.199s]       |            [01;35m[K^[m[K
+[9.199s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:280:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_NORMAL4D[m[K’
+[9.199s]   280 |   [01;36m[KPCL_ADD_UNION_NORMAL4D[m[K \
+[9.199s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[9.200s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1002:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_NORMAL4D[m[K’
+[9.200s]  1002 |     [01;36m[KPCL_ADD_NORMAL4D[m[K; // This adds the member normal[3] which can also be accessed using the point (which is float[4])
+[9.200s]       |     [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[9.200s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:289:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.200s]   289 |       [01;35m[K{[m[K \
+[9.201s]       |       [01;35m[K^[m[K
+[9.201s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1007:9:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_RGB[m[K’
+[9.201s]  1007 |         [01;36m[KPCL_ADD_UNION_RGB[m[K;
+[9.201s]       |         [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[9.201s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.201s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.202s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1007:26:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.202s]  1007 |         PCL_ADD_UNION_RGB[01;35m[K;[m[K
+[9.202s]       |                          [01;35m[K^[m[K
+[9.202s]       |                          [31m[K-[m[K
+[9.202s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1006:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.202s]  1006 |       [01;35m[K{[m[K
+[9.202s]       |       [01;35m[K^[m[K
+[9.202s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.203s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.203s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:241:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.203s]   241 |     struct [01;35m[K{[m[K \
+[9.203s]       |            [01;35m[K^[m[K
+[9.203s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:259:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_POINT4D[m[K’
+[9.203s]   259 |   [01;36m[KPCL_ADD_UNION_POINT4D[m[K \
+[9.203s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[9.203s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1085:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_POINT4D[m[K’
+[9.204s]  1085 |     [01;36m[KPCL_ADD_POINT4D[m[K; // This adds the members x,y,z which can also be accessed using the point (which is float[4])
+[9.204s]       |     [01;36m[K^~~~~~~~~~~~~~~[m[K
+[9.204s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:266:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.204s]   266 |     struct [01;35m[K{[m[K \
+[9.204s]       |            [01;35m[K^[m[K
+[9.204s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:280:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_NORMAL4D[m[K’
+[9.205s]   280 |   [01;36m[KPCL_ADD_UNION_NORMAL4D[m[K \
+[9.205s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[9.205s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1086:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_NORMAL4D[m[K’
+[9.205s]  1086 |     [01;36m[KPCL_ADD_NORMAL4D[m[K; // This adds the member normal[3] which can also be accessed using the point (which is float[4])
+[9.205s]       |     [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[9.205s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.205s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.205s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1090:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.206s]  1090 |       [01;35m[K{[m[K
+[9.206s]       |       [01;35m[K^[m[K
+[9.206s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.206s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.206s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:241:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.206s]   241 |     struct [01;35m[K{[m[K \
+[9.206s]       |            [01;35m[K^[m[K
+[9.206s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:259:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_POINT4D[m[K’
+[9.207s]   259 |   [01;36m[KPCL_ADD_UNION_POINT4D[m[K \
+[9.207s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[9.207s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1135:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_POINT4D[m[K’
+[9.207s]  1135 |     [01;36m[KPCL_ADD_POINT4D[m[K; // This adds the members x,y,z which can also be accessed using the point (which is float[4])
+[9.207s]       |     [01;36m[K^~~~~~~~~~~~~~~[m[K
+[9.207s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:266:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.208s]   266 |     struct [01;35m[K{[m[K \
+[9.208s]       |            [01;35m[K^[m[K
+[9.208s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:280:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_NORMAL4D[m[K’
+[9.208s]   280 |   [01;36m[KPCL_ADD_UNION_NORMAL4D[m[K \
+[9.208s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[9.208s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1136:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_NORMAL4D[m[K’
+[9.208s]  1136 |     [01;36m[KPCL_ADD_NORMAL4D[m[K; // This adds the member normal[3] which can also be accessed using the point (which is float[4])
+[9.208s]       |     [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[9.209s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.209s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.209s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1140:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.209s]  1140 |       [01;35m[K{[m[K
+[9.209s]       |       [01;35m[K^[m[K
+[9.209s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.209s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.210s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:241:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.210s]   241 |     struct [01;35m[K{[m[K \
+[9.210s]       |            [01;35m[K^[m[K
+[9.210s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:259:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_POINT4D[m[K’
+[9.210s]   259 |   [01;36m[KPCL_ADD_UNION_POINT4D[m[K \
+[9.210s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[9.210s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1187:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_POINT4D[m[K’
+[9.210s]  1187 |     [01;36m[KPCL_ADD_POINT4D[m[K; // This adds the members x,y,z which can also be accessed using the point (which is float[4])
+[9.210s]       |     [01;36m[K^~~~~~~~~~~~~~~[m[K
+[9.211s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.211s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.211s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1191:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.211s]  1191 |       [01;35m[K{[m[K
+[9.211s]       |       [01;35m[K^[m[K
+[9.211s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.211s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.211s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:241:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.212s]   241 |     struct [01;35m[K{[m[K \
+[9.212s]       |            [01;35m[K^[m[K
+[9.212s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:259:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_POINT4D[m[K’
+[9.212s]   259 |   [01;36m[KPCL_ADD_UNION_POINT4D[m[K \
+[9.212s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[9.212s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1226:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_POINT4D[m[K’
+[9.212s]  1226 |     [01;36m[KPCL_ADD_POINT4D[m[K; // This adds the members x,y,z which can also be accessed using the point (which is float[4])
+[9.212s]       |     [01;36m[K^~~~~~~~~~~~~~~[m[K
+[9.213s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.213s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.213s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1230:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.213s]  1230 |       [01;35m[K{[m[K
+[9.213s]       |       [01;35m[K^[m[K
+[9.213s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1326:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.213s]  1326 |       [01;35m[K{[m[K
+[9.213s]       |       [01;35m[K^[m[K
+[9.217s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1519:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.217s]  1519 |       [01;35m[K{[m[K
+[9.217s]       |       [01;35m[K^[m[K
+[9.327s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1738:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.328s]  1738 |       [01;35m[K{[m[K
+[9.328s]       |       [01;35m[K^[m[K
+[9.328s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.328s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.328s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:241:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.328s]   241 |     struct [01;35m[K{[m[K \
+[9.329s]       |            [01;35m[K^[m[K
+[9.329s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:259:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_POINT4D[m[K’
+[9.329s]   259 |   [01;36m[KPCL_ADD_UNION_POINT4D[m[K \
+[9.329s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[9.329s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1765:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_POINT4D[m[K’
+[9.329s]  1765 |     [01;36m[KPCL_ADD_POINT4D[m[K; // This adds the members x,y,z which can also be accessed using the point (which is float[4])
+[9.329s]       |     [01;36m[K^~~~~~~~~~~~~~~[m[K
+[9.330s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:241:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.330s]   241 |     struct [01;35m[K{[m[K \
+[9.331s]       |            [01;35m[K^[m[K
+[9.331s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:259:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_POINT4D[m[K’
+[9.331s]   259 |   [01;36m[KPCL_ADD_UNION_POINT4D[m[K \
+[9.331s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[9.331s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1818:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_POINT4D[m[K’
+[9.331s]  1818 |     [01;36m[KPCL_ADD_POINT4D[m[K; // This adds the members x,y,z which can also be accessed using the point (which is float[4])
+[9.332s]       |     [01;36m[K^~~~~~~~~~~~~~~[m[K
+[9.332s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:266:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.332s]   266 |     struct [01;35m[K{[m[K \
+[9.332s]       |            [01;35m[K^[m[K
+[9.332s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:280:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_NORMAL4D[m[K’
+[9.332s]   280 |   [01;36m[KPCL_ADD_UNION_NORMAL4D[m[K \
+[9.332s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[9.332s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1819:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_NORMAL4D[m[K’
+[9.333s]  1819 |     [01;36m[KPCL_ADD_NORMAL4D[m[K; // This adds the member normal[3] which can also be accessed using the point (which is float[4])
+[9.333s]       |     [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[9.333s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:289:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.333s]   289 |       [01;35m[K{[m[K \
+[9.333s]       |       [01;35m[K^[m[K
+[9.333s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1824:9:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_RGB[m[K’
+[9.333s]  1824 |         [01;36m[KPCL_ADD_UNION_RGB[m[K;
+[9.333s]       |         [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[9.334s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.334s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.334s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1824:26:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.334s]  1824 |         PCL_ADD_UNION_RGB[01;35m[K;[m[K
+[9.334s]       |                          [01;35m[K^[m[K
+[9.334s]       |                          [31m[K-[m[K
+[9.334s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1823:7:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.335s]  1823 |       [01;35m[K{[m[K
+[9.335s]       |       [01;35m[K^[m[K
+[9.335s] In file included from [01m[K/usr/include/pcl-1.12/pcl/point_types.h:354[m[K,
+[9.335s]                  from [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:4[m[K:
+[9.335s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:241:12:[m[K [01;35m[Kwarning: [m[KISO C++ prohibits anonymous structs [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+[9.335s]   241 |     struct [01;35m[K{[m[K \
+[9.335s]       |            [01;35m[K^[m[K
+[9.335s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:259:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_UNION_POINT4D[m[K’
+[9.336s]   259 |   [01;36m[KPCL_ADD_UNION_POINT4D[m[K \
+[9.336s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[9.336s] [01m[K/usr/include/pcl-1.12/pcl/impl/point_types.hpp:1867:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPCL_ADD_POINT4D[m[K’
+[9.336s]  1867 |     [01;36m[KPCL_ADD_POINT4D[m[K;
+[9.336s]       |     [01;36m[K^~~~~~~~~~~~~~~[m[K
+[10.874s] [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:[m[K In function ‘[01m[Kbool saveLaz(const string&, const std::vector<Point3Di>&)[m[K’:
+[10.875s] [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:176:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Point3Di>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.875s]   176 |     for (int i = 0; [01;35m[Ki < points_global.size()[m[K; i++)
+[10.875s]       |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~[m[K
+[10.875s] [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:187:29:[m[K [01;35m[Kwarning: [m[KISO C++11 does not support the 'I' printf flag [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+[10.875s]   187 |             fprintf(stderr, [01;35m[K"DLL ERROR: setting coordinates for point %I64d\n"[m[K, p_count);
+[10.875s]       |                             [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[10.876s] [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:187:75:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 3 has type ‘[01m[Klaszip_I64[m[K’ {aka ‘[01m[Klong int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+[10.876s]   187 |             fprintf(stderr, "DLL ERROR: setting coordinates for point [01;35m[K%I64d[m[K\n", [32m[Kp_count[m[K);
+[10.876s]       |                                                                       [01;35m[K~~~~^[m[K     [32m[K~~~~~~~[m[K
+[10.876s]       |                                                                           [01;35m[K|[m[K     [32m[K|[m[K
+[10.876s]       |                                                                           [01;35m[Kint[m[K   [32m[Klaszip_I64 {aka long int}[m[K
+[10.876s]       |                                                                       [32m[K%I64ld[m[K
+[10.876s] [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:193:29:[m[K [01;35m[Kwarning: [m[KISO C++11 does not support the 'I' printf flag [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+[10.876s]   193 |             fprintf(stderr, [01;35m[K"DLL ERROR: writing point %I64d\n"[m[K, p_count);
+[10.877s]       |                             [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[10.877s] [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:193:59:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 3 has type ‘[01m[Klaszip_I64[m[K’ {aka ‘[01m[Klong int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+[10.877s]   193 |             fprintf(stderr, "DLL ERROR: writing point [01;35m[K%I64d[m[K\n", [32m[Kp_count[m[K);
+[10.877s]       |                                                       [01;35m[K~~~~^[m[K     [32m[K~~~~~~~[m[K
+[10.877s]       |                                                           [01;35m[K|[m[K     [32m[K|[m[K
+[10.877s]       |                                                           [01;35m[Kint[m[K   [32m[Klaszip_I64 {aka long int}[m[K
+[10.877s]       |                                                       [32m[K%I64ld[m[K
+[10.878s] [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:204:21:[m[K [01;35m[Kwarning: [m[KISO C++11 does not support the 'I' printf flag [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+[10.878s]   204 |     fprintf(stderr, [01;35m[K"successfully written %I64d points\n"[m[K, p_count);
+[10.878s]       |                     [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[10.878s] [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:204:47:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 3 has type ‘[01m[Klaszip_I64[m[K’ {aka ‘[01m[Klong int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+[10.878s]   204 |     fprintf(stderr, "successfully written [01;35m[K%I64d[m[K points\n", [32m[Kp_count[m[K);
+[10.878s]       |                                           [01;35m[K~~~~^[m[K            [32m[K~~~~~~~[m[K
+[10.878s]       |                                               [01;35m[K|[m[K            [32m[K|[m[K
+[10.879s]       |                                               [01;35m[Kint[m[K          [32m[Klaszip_I64 {aka long int}[m[K
+[10.879s]       |                                           [32m[K%I64ld[m[K
+[10.924s] [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[10.924s] [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:282:9:[m[K [01;31m[Kerror: [m[Ka function-definition is not allowed here before ‘[01m[K{[m[K’ token
+[10.924s]   282 |         [01;31m[K{[m[K
+[10.925s]       |         [01;31m[K^[m[K
+[10.925s] [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:324:9:[m[K [01;31m[Kerror: [m[Ka function-definition is not allowed here before ‘[01m[K{[m[K’ token
+[10.925s]   324 |         [01;31m[K{[m[K
+[10.925s]       |         [01;31m[K^[m[K
+[10.932s] [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:441:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Point3Di>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.932s]   441 |     for (int i = 0; [01;35m[Ki < points_global.size()[m[K; i++)
+[10.932s]       |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~[m[K
+[10.935s] [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:470:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<MeridianTrajectoryPose>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.935s]   470 |     for (int i = 0; [01;35m[Ki < trajectory.size()[m[K; i++)
+[10.935s]       |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~[m[K
+[10.936s] [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:475:27:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::vector<Point3Di> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.936s]   475 |         for (int j = 0; [01;35m[Kj < chunks_pc.size()[m[K; j++)
+[10.936s]       |                         [01;35m[K~~^~~~~~~~~~~~~~~~~~[m[K
+[10.938s] [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:495:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::vector<Point3Di> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.939s]   495 |     for (int i = 0; [01;35m[Ki < chunks_pc.size()[m[K; i++)
+[10.939s]       |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~[m[K
+[11.013s] [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:524:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::vector<MeridianTrajectoryPose> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[11.014s]   524 |     for (int i = 0; [01;35m[Ki < chunks_trajectory.size()[m[K; i++)
+[11.014s]       |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[11.014s] [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:526:27:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<MeridianTrajectoryPose>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[11.014s]   526 |         for (int j = 0; [01;35m[Kj < chunks_trajectory[i].size()[m[K; j++)
+[11.014s]       |                         [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[11.015s] [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:539:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::vector<Point3Di> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[11.015s]   539 |     for (int i = 0; [01;35m[Ki < chunks_pc.size()[m[K; i++)
+[11.016s]       |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~[m[K
+[11.020s] [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:581:27:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<MeridianTrajectoryPose>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[11.021s]   581 |         for (int j = 0; [01;35m[Kj < chunks_trajectory[i].size()[m[K; j++)
+[11.021s]       |                         [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[11.225s] [01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:659:27:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::vector<Point3Di> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[11.225s]   659 |         for (int i = 0; [01;35m[Ki < chunks_pc.size()[m[K; i++)
+[11.225s]       |                         [01;35m[K~~^~~~~~~~~~~~~~~~~~[m[K
+[15.936s] gmake[2]: *** [CMakeFiles/listener.dir/build.make:76: CMakeFiles/listener.dir/src/kiss_odometry_subscriber.cpp.o] Error 1
+[15.936s] gmake[1]: *** [CMakeFiles/Makefile2:188: CMakeFiles/listener.dir/all] Error 2
+[15.937s] gmake: *** [Makefile:166: all] Error 2
+[15.941s] Invoked command in '/home/robot/ros2_ws/build/cpp_pubsub' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/robot/ros2_ws/build/cpp_pubsub -- -j24 -l24

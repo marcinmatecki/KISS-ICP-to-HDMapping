@@ -11,6 +11,8 @@
 #include <thread> 
 #include <filesystem>
 #include <nlohmann/json.hpp>
+#include "rosbag2_cpp/reader.hpp"
+#include "rclcpp/serialization.hpp"
 
 struct Point3Di
 {
@@ -346,40 +348,135 @@ void pointCloudCallback(const sensor_msgs::msg::PointCloud2::SharedPtr msg)
 
 int main(int argc, char **argv)
 {
-    // Inicjalizacja ROS2
-    rclcpp::init(argc, argv);
 
-    // Tworzymy node
-    auto node = std::make_shared<rclcpp::Node>("pointcloud_subscriber");
-
-    // Subskrybujemy temat /kiss/odometry
-    auto odom_sub = node->create_subscription<nav_msgs::msg::Odometry>(
-        "/kiss/odometry", 100, odometryCallback);
-
-    // Subskrybujemy temat /kiss/pointcloud
-    auto point_cloud_sub = node->create_subscription<sensor_msgs::msg::PointCloud2>(
-        "/kiss/frame", 100, pointCloudCallback);
-    
-    // // Określenie liczby rdzeni CPU w systemie
-    unsigned int num_threads = std::thread::hardware_concurrency();
-
-    // Fallback to default if hardware_concurrency returns 0
-    if (num_threads == 0) {
-        num_threads = 16;  // Fallback value
+    // parse command line arguments for directory to process
+    if (argc < 3)
+    {
+        std::cout << "Usage: " << argv[0] << " <input_bag> <directory>" << std::endl;
+        std::cout << " Options are:" << std::endl;
+        std::cout << " --input " << std::endl;
+        std::cout << " --directory " << std::endl;
+        return 1;
     }
-    RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Using %u threads for executor", num_threads);
+    const std::string input_bag = argv[1];
+    const std::string output_directory = argv[2];
+    rclcpp::Serialization<sensor_msgs::msg::PointCloud2> serializationPointCloud2;
+    rclcpp::Serialization<nav_msgs::msg::Odometry> serializationOdom;
 
-    // // Create executor without options
-    rclcpp::executors::MultiThreadedExecutor executor;
+    std::cout << "Processing bag: " << input_bag << std::endl;
+    rosbag2_cpp::Reader bag;
+  
+    bag.open(input_bag);
+  
+    while (bag.has_next())
+          {
+            rosbag2_storage::SerializedBagMessageSharedPtr msg = bag.read_next();
 
-    // // Dodajemy node do executor'a
-    executor.add_node(node);
-
-    executor.spin();
- 
-    // Zakończenie pracy z ROS2
-    rclcpp::shutdown();
-    // std::cout << std::setprecision(20);
+            if (msg->topic_name == "/kiss/frame") {
+            // Logowanie odbioru wiadomości
+            RCLCPP_INFO(rclcpp::get_logger("KissOdometrySubscriber"), "Odebrano wiadomość na temat: /kiss/frame");
+        
+            // Tworzenie pustej wiadomości PointCloud2
+            rclcpp::SerializedMessage serialized_msg(*msg->serialized_data);
+            auto cloud_msg = std::make_shared<sensor_msgs::msg::PointCloud2>();
+        
+            serializationPointCloud2.deserialize_message(&serialized_msg, cloud_msg.get());
+        
+            // Sprawdzenie poprawności danych
+            if (!cloud_msg || cloud_msg->data.empty()) {
+                RCLCPP_ERROR(rclcpp::get_logger("KissOdometrySubscriber"), "Błąd: Pusta wiadomość PointCloud2!");
+                return 1;
+            }
+        
+            pcl::PointCloud<pcl::PointXYZ> cloud;
+            size_t point_step = cloud_msg->point_step;
+            size_t num_points = cloud_msg->width * cloud_msg->height;  // Suma punktów
+            uint8_t* data_ptr = cloud_msg->data.data();
+        
+            if (point_step < 12) {  // Każdy punkt powinien mieć min. 3 * float (3 * 4 bajty)
+                RCLCPP_ERROR(rclcpp::get_logger("KissOdometrySubscriber"), "Błąd: Nieprawidłowy point_step!");
+                return 1;
+                }
+        
+                RCLCPP_INFO(rclcpp::get_logger("KissOdometrySubscriber"), "Przetwarzanie %zu punktów", num_points);
+        
+                for (size_t i = 0; i < num_points; ++i) {
+                    pcl::PointXYZ point;
+                
+                // Odczyt współrzędnych x, y, z z odpowiednich przesunięć
+                point.x = *reinterpret_cast<float*>(data_ptr + i * point_step);
+                point.y = *reinterpret_cast<float*>(data_ptr + i * point_step + 4);
+                point.z = *reinterpret_cast<float*>(data_ptr + i * point_step + 8);
+        
+                cloud.points.push_back(point);
+        
+                // Konwersja do Point3Di
+                Point3Di point_global;
+                if (cloud_msg->header.stamp.sec != 0 || cloud_msg->header.stamp.nanosec != 0) {
+                    uint64_t sec_in_ms = static_cast<uint64_t>(cloud_msg->header.stamp.sec) * 1000ULL;
+                    uint64_t ns_in_ms = static_cast<uint64_t>(cloud_msg->header.stamp.nanosec) / 1'000'000ULL;
+                    point_global.timestamp = sec_in_ms + ns_in_ms;
+                }
+        
+                point_global.point = Eigen::Vector3d(point.x, point.y, point.z);
+                point_global.intensity = 0;
+                point_global.index_pose = static_cast<int>(i);
+                point_global.lidarid = 1;
+                point_global.index_point = static_cast<int>(i);
+        
+                points_global.push_back(point_global);
+                }   
+        
+                RCLCPP_INFO(rclcpp::get_logger("KissOdometrySubscriber"), "Przetworzono %zu punktów!", cloud.points.size());
+            }
+            
+            if (msg->topic_name == "/kiss/odometry") {
+                RCLCPP_INFO(rclcpp::get_logger("KissOdometryS"), "Odebrano wiadomość na temat: /kiss/odometry");
+            
+                // Deserializacja wiadomości
+                auto odom_msg = std::make_shared<nav_msgs::msg::Odometry>();
+                rclcpp::SerializedMessage serialized_msg(*msg->serialized_data);
+                serializationOdom.deserialize_message(&serialized_msg, odom_msg.get());
+            
+                // Sprawdzenie, czy deserializacja się powiodła
+                if (!odom_msg) {
+                    RCLCPP_ERROR(rclcpp::get_logger("KissOdometryS"), "Błąd deserializacji wiadomości Odometry!");
+                    return 1;
+                }
+            
+                // Pobranie pozycji i orientacji
+                double x = odom_msg->pose.pose.position.x;
+                double y = odom_msg->pose.pose.position.y;
+                double z = odom_msg->pose.pose.position.z;
+            
+                double qx = odom_msg->pose.pose.orientation.x;
+                double qy = odom_msg->pose.pose.orientation.y;
+                double qz = odom_msg->pose.pose.orientation.z;
+                double qw = odom_msg->pose.pose.orientation.w;
+            
+                MeridianTrajectoryPose pose;
+                
+                // Przeliczenie znacznika czasu
+                uint64_t sec_in_ms = static_cast<uint64_t>(odom_msg->header.stamp.sec) * 1000ULL;
+                uint64_t ns_in_ms = static_cast<uint64_t>(odom_msg->header.stamp.nanosec) / 1'000'000ULL;
+                pose.timestamp_ns = sec_in_ms + ns_in_ms;
+            
+                // Przypisanie wartości do struktury trajektorii
+                pose.x_m = x;
+                pose.y_m = y;
+                pose.z_m = z;
+                pose.qw = qw;
+                pose.qx = qx;
+                pose.qy = qy;
+                pose.qz = qz;
+            
+                // Dodanie do trajektorii
+                trajectory.push_back(pose);
+            
+                RCLCPP_INFO(rclcpp::get_logger("KissOdometryS"), "Dodano pozycję do trajektorii: x=%.3f, y=%.3f, z=%.3f", x, y, z);
+            }
+                          
+        }
     std::cout << trajectory[0].timestamp_ns << std::endl;
     std::cout << points_global[0].timestamp << std::endl;
 
@@ -495,7 +592,7 @@ int main(int argc, char **argv)
     }
 
     ////////////////////////
-    fs::path outwd = "/home/robot/datasets";
+    fs::path outwd = output_directory;
 
     Eigen::Vector3d offset(0, 0, 0); // --obliczyc
     int cc = 0;

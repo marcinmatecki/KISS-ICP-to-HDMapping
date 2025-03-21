@@ -1,0 +1,11 @@
+[  7%] Built target laszip_api
+[ 92%] Built target laszip
+[35m[1mConsolidate compiler generated dependencies of target listener[0m
+[ 96%] [32mBuilding CXX object CMakeFiles/listener.dir/src/kiss_odometry_subscriber.cpp.o[0m
+[01m[K/home/robot/ros2_ws/src/cpp_pubsub/src/kiss_odometry_subscriber.cpp:15:10:[m[K [01;31m[Kfatal error: [m[Krosbag2_cpp/reader.hpp: No such file or directory
+   15 | #include [01;31m[K"rosbag2_cpp/reader.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/listener.dir/build.make:76: CMakeFiles/listener.dir/src/kiss_odometry_subscriber.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:188: CMakeFiles/listener.dir/all] Error 2
+gmake: *** [Makefile:166: all] Error 2

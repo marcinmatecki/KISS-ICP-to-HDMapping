@@ -1,0 +1,3 @@
+gmake[2]: *** [CMakeFiles/listener.dir/build.make:76: CMakeFiles/listener.dir/src/kiss_odometry_subscriber.cpp.o] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:188: CMakeFiles/listener.dir/all] Interrupt
+gmake: *** [Makefile:166: all] Interrupt

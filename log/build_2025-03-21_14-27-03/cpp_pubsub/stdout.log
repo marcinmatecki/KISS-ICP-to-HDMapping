@@ -1,0 +1,3 @@
+[  7%] Built target laszip_api
+[ 92%] Built target laszip
+[ 96%] [32mBuilding CXX object CMakeFiles/listener.dir/src/kiss_odometry_subscriber.cpp.o[0m

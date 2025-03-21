@@ -16,5 +16,5 @@
   <depend>nav_msgs</depend>
   <depend>sensor_msgs</depend> 
   <depend>PCL</depend>
-
+  <depend>rosbag2_cpp</depend>
 </package>

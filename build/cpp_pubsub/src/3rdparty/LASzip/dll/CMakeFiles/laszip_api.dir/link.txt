@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC  -Wno-format-security -Wno-format-truncation -shared -Wl,-soname,liblaszip_api.so.8 -o ../lib/liblaszip_api.so.8.0.6 CMakeFiles/laszip_api.dir/laszip_api.c.o  -Wl,-rpath,:::::::::::::::::::::::::::::::::::::::::: 

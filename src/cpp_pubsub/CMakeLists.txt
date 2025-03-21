@@ -16,6 +16,7 @@ find_package(nav_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(PCL REQUIRED)
+find_package(rosbag2_cpp REQUIRED)
 
 set(EXTERNAL_LIBRARIES_DIRECTORY src/3rdparty)
 
@@ -45,7 +46,7 @@ target_include_directories(
   listener
   PRIVATE ${LASZIP_INCLUDE_DIR}/LASzip/include)
 
-ament_target_dependencies(listener rclcpp nav_msgs geometry_msgs sensor_msgs PCL)
+ament_target_dependencies(listener rclcpp nav_msgs geometry_msgs sensor_msgs PCL rosbag2_cpp)
 
 
 
