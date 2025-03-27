@@ -24,7 +24,7 @@ struct Point3Di
 	int index_point;
 };
 
-struct MeridianTrajectoryPose
+struct TrajectoryPose
 {
     double timestamp_ns;
     double x_m;
@@ -34,13 +34,14 @@ struct MeridianTrajectoryPose
     double qx;
     double qy;
     double qz;
+    Eigen::Affine3d pose;
 };
 
 namespace fs = std::filesystem;
 std::vector<Point3Di> points_global;
 
-std::vector<MeridianTrajectoryPose> trajectory;
-std::vector<std::vector<MeridianTrajectoryPose>> chunks_trajectory;
+std::vector<TrajectoryPose> trajectory;
+std::vector<std::vector<TrajectoryPose>> chunks_trajectory;
 
 // void saveOdometryDataToFile(const std::string &filename,
 //                              double x, double y, double z,
@@ -263,7 +264,7 @@ bool save_poses(const std::string file_name, std::vector<Eigen::Affine3d> m_pose
 //     double qz = msg->pose.pose.orientation.z;
 //     double qw = msg->pose.pose.orientation.w;
   
-//     MeridianTrajectoryPose pose;
+//     TrajectoryPose pose;
 
 //     uint64_t sec_in_ms = static_cast<uint64_t>(msg->header.stamp.sec) * 1000ULL;
 //     uint64_t ns_in_ms = static_cast<uint64_t>(msg->header.stamp.nanosec) / 1'000'000ULL;
@@ -369,10 +370,10 @@ int main(int argc, char **argv)
     bag.open(input_bag);
   
     while (bag.has_next())
-          {
-            rosbag2_storage::SerializedBagMessageSharedPtr msg = bag.read_next();
+    {
+        rosbag2_storage::SerializedBagMessageSharedPtr msg = bag.read_next();
 
-            if (msg->topic_name == "/kiss/frame") {
+        if (msg->topic_name == "/kiss/frame") {
             // Logowanie odbioru wiadomości
             RCLCPP_INFO(rclcpp::get_logger("KissFrame"), "Received message on topic: /kiss/frame");
         
@@ -387,7 +388,7 @@ int main(int argc, char **argv)
                 RCLCPP_ERROR(rclcpp::get_logger("KissFrame"), "Error: Empty PointCloud2 message!");
                 return 1;
             }
-        
+    
             pcl::PointCloud<pcl::PointXYZ> cloud;
             size_t point_step = cloud_msg->point_step;
             size_t num_points = cloud_msg->width * cloud_msg->height;  // Suma punktów
@@ -396,13 +397,13 @@ int main(int argc, char **argv)
             if (point_step < 12) { 
                 RCLCPP_ERROR(rclcpp::get_logger("KissFrame"), "Error: Invalid point_step!");
                 return 1;
-                }
-        
-                RCLCPP_INFO(rclcpp::get_logger("KissFrame"), "Processing %zu points", num_points);
-        
-                for (size_t i = 0; i < num_points; ++i) {
-                    pcl::PointXYZ point;
-                
+            }
+    
+            RCLCPP_INFO(rclcpp::get_logger("KissFrame"), "Processing %zu points", num_points);
+
+            for (size_t i = 0; i < num_points; ++i) {
+                pcl::PointXYZ point;
+            
                 // Odczyt współrzędnych x, y, z z odpowiednich przesunięć
                 point.x = *reinterpret_cast<float*>(data_ptr + i * point_step);
                 point.y = *reinterpret_cast<float*>(data_ptr + i * point_step + 4);
@@ -421,62 +422,99 @@ int main(int argc, char **argv)
                 point_global.point = Eigen::Vector3d(point.x, point.y, point.z);
                 point_global.intensity = 0;
                 point_global.index_pose = static_cast<int>(i);
-                point_global.lidarid = 1;
+                point_global.lidarid = 0;
                 point_global.index_point = static_cast<int>(i);
         
                 points_global.push_back(point_global);
-                }   
-        
-                RCLCPP_INFO(rclcpp::get_logger("KissFrame"), "Processed %zu points!", cloud.points.size());
-            }
-            
-            if (msg->topic_name == "/kiss/odometry") {
-                RCLCPP_INFO(rclcpp::get_logger("KissOdometry"), "Received message on topic: /kiss/odometry");
-            
-                // Deserializacja wiadomości
-                auto odom_msg = std::make_shared<nav_msgs::msg::Odometry>();
-                rclcpp::SerializedMessage serialized_msg(*msg->serialized_data);
-                serializationOdom.deserialize_message(&serialized_msg, odom_msg.get());
-            
-                // Sprawdzenie, czy deserializacja się powiodła
-                if (!odom_msg) {
-                    RCLCPP_ERROR(rclcpp::get_logger("KissOdometry"), "Odometry message deserialization error!");
-                    return 1;
-                }
-            
-                // Pobranie pozycji i orientacji
-                double x = odom_msg->pose.pose.position.x;
-                double y = odom_msg->pose.pose.position.y;
-                double z = odom_msg->pose.pose.position.z;
-            
-                double qx = odom_msg->pose.pose.orientation.x;
-                double qy = odom_msg->pose.pose.orientation.y;
-                double qz = odom_msg->pose.pose.orientation.z;
-                double qw = odom_msg->pose.pose.orientation.w;
-            
-                MeridianTrajectoryPose pose;
-                
-                // Przeliczenie znacznika czasu
-                uint64_t sec_in_ms = static_cast<uint64_t>(odom_msg->header.stamp.sec) * 1000ULL;
-                uint64_t ns_in_ms = static_cast<uint64_t>(odom_msg->header.stamp.nanosec) / 1'000'000ULL;
-                pose.timestamp_ns = sec_in_ms + ns_in_ms;
-            
-                // Przypisanie wartości do struktury trajektorii
-                pose.x_m = x;
-                pose.y_m = y;
-                pose.z_m = z;
-                pose.qw = qw;
-                pose.qx = qx;
-                pose.qy = qy;
-                pose.qz = qz;
-            
-                // Dodanie do trajektorii
-                trajectory.push_back(pose);
-            
-                RCLCPP_INFO(rclcpp::get_logger("KissOdometry"), "Added position to trajectory: x=%.3f, y=%.3f, z=%.3f", x, y, z);
-            }
-                          
+            }   
+
+            RCLCPP_INFO(rclcpp::get_logger("KissFrame"), "Processed %zu points!", cloud.points.size());
         }
+        
+        if (msg->topic_name == "/kiss/odometry") {
+            RCLCPP_INFO(rclcpp::get_logger("KissOdometry"), "Received message on topic: /kiss/odometry");
+        
+            // Deserializacja wiadomości
+            auto odom_msg = std::make_shared<nav_msgs::msg::Odometry>();
+            rclcpp::SerializedMessage serialized_msg(*msg->serialized_data);
+            serializationOdom.deserialize_message(&serialized_msg, odom_msg.get());
+        
+            // Sprawdzenie, czy deserializacja się powiodła
+            if (!odom_msg) {
+                RCLCPP_ERROR(rclcpp::get_logger("KissOdometry"), "Odometry message deserialization error!");
+                return 1;
+            }
+        
+            // Pobranie pozycji i orientacji
+            double x = odom_msg->pose.pose.position.x;
+            double y = odom_msg->pose.pose.position.y;
+            double z = odom_msg->pose.pose.position.z;
+        
+            double qx = odom_msg->pose.pose.orientation.x;
+            double qy = odom_msg->pose.pose.orientation.y;
+            double qz = odom_msg->pose.pose.orientation.z;
+            double qw = odom_msg->pose.pose.orientation.w;
+        
+            TrajectoryPose pose;
+            
+            // Przeliczenie znacznika czasu
+            uint64_t sec_in_ms = static_cast<uint64_t>(odom_msg->header.stamp.sec) * 1000ULL;
+            uint64_t ns_in_ms = static_cast<uint64_t>(odom_msg->header.stamp.nanosec) / 1'000'000ULL;
+            pose.timestamp_ns = sec_in_ms + ns_in_ms;
+        
+            // Przypisanie wartości do struktury trajektorii
+            pose.x_m = x;
+            pose.y_m = y;
+            pose.z_m = z;
+            pose.qw = qw;
+            pose.qx = qx;
+            pose.qy = qy;
+            pose.qz = qz;
+
+            pose.pose = Eigen::Affine3d::Identity();
+            
+            Eigen::Vector3d trans(x, y, z);
+            Eigen::Quaterniond q(qw, qx, qy, qz);
+
+            
+            pose.pose.translation() = trans;
+            pose.pose.linear() = q.toRotationMatrix();
+
+
+            // Dodanie do trajektorii
+            trajectory.push_back(pose);
+        
+            RCLCPP_INFO(rclcpp::get_logger("KissOdometry"), "Added position to trajectory: x=%.3f, y=%.3f, z=%.3f", x, y, z);
+        }
+    }
+
+    std::cout << "start transforming point to global coordinate system" << std::endl;
+
+    for(int i = 0; i < points_global.size(); i++){
+        //auto lower = std::lower_bound(trajectory.begin(), trajectory.end(), points_global[i].timestamp);
+        //auto index_pose = std::distance(trajectory.begin(), lower);
+
+        if(i % 1000000 == 0){
+            std::cout << "computed: " << i << " of " << points_global.size() << std::endl;
+        }
+        
+        auto lower = std::lower_bound(trajectory.begin(), trajectory.end(), points_global[i].timestamp,
+                                              [](TrajectoryPose lhs, double rhs) -> bool
+                                              { return lhs.timestamp_ns < rhs; });
+
+
+                                              //std::vector<TrajectoryPose>
+        int index_pose = std::distance(trajectory.begin(), lower) - 1;
+        if (index_pose >= 0 && index_pose < trajectory.size())
+        {
+            points_global[i].point = trajectory[index_pose].pose * points_global[i].point;
+        }
+    }
+    
+                   
+    std::cout << "transforming point to global coordinate system finished" << std::endl;
+
+
     // std::cout << trajectory[0].timestamp_ns << std::endl;
     // std::cout << points_global[0].timestamp << std::endl;
 
@@ -735,9 +773,6 @@ int main(int argc, char **argv)
     j["offset_x"] = 0.0;
     j["offset_y"] = 0.0;
     j["offset_z"] = 0.0;
-    j["offset_moli_x"] = offset.x();
-    j["offset_moli_y"] = offset.y();
-    j["offset_moli_z"] = offset.z();
     j["folder_name"] = outwd;
     j["out_folder_name"] = outwd;
     j["poses_file_name"] = path2.string();
