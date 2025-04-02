@@ -777,7 +777,7 @@ int main(int argc, char **argv)
     j["poses_file_name"] = path2.string();
     j["initial_poses_file_name"] = path.string();
     j["out_poses_file_name"] = path2.string();
-    j["lidar_odometry_version"] = "MOLI";
+    j["lidar_odometry_version"] = "Kis";
 
     jj["Session Settings"] = j;
 
