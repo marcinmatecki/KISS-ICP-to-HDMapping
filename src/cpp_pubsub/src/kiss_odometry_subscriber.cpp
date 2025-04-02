@@ -769,7 +769,6 @@ int main(int argc, char **argv)
 
     nlohmann::json jj;
     nlohmann::json j;
-
     j["offset_x"] = 0.0;
     j["offset_y"] = 0.0;
     j["offset_z"] = 0.0;
