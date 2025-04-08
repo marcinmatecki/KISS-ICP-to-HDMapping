@@ -254,8 +254,8 @@ int main(int argc, char **argv)
     {
         rosbag2_storage::SerializedBagMessageSharedPtr msg = bag.read_next();
 
-        if (msg->topic_name == "/kiss/frame") {
-            RCLCPP_INFO(rclcpp::get_logger("KissFrame"), "Received message on topic: /kiss/frame");
+        if (msg->topic_name == "/kiss/local_map") {
+            RCLCPP_INFO(rclcpp::get_logger("KissFrame"), "Received message on topic: /kiss/local_map");
         
             rclcpp::SerializedMessage serialized_msg(*msg->serialized_data);
             auto cloud_msg = std::make_shared<sensor_msgs::msg::PointCloud2>();
@@ -358,31 +358,31 @@ int main(int argc, char **argv)
         }
     }
 
-    std::cout << "start transforming point to global coordinate system" << std::endl;
+    // std::cout << "start transforming point to global coordinate system" << std::endl;
 
-    for(int i = 0; i < points_global.size(); i++){
-        //auto lower = std::lower_bound(trajectory.begin(), trajectory.end(), points_global[i].timestamp);
-        //auto index_pose = std::distance(trajectory.begin(), lower);
+    // for(int i = 0; i < points_global.size(); i++){
+    //     //auto lower = std::lower_bound(trajectory.begin(), trajectory.end(), points_global[i].timestamp);
+    //     //auto index_pose = std::distance(trajectory.begin(), lower);
 
-        if(i % 1000000 == 0){
-            std::cout << "computed: " << i << " of " << points_global.size() << std::endl;
-        }
+    //     if(i % 1000000 == 0){
+    //         std::cout << "computed: " << i << " of " << points_global.size() << std::endl;
+    //     }
         
-        auto lower = std::lower_bound(trajectory.begin(), trajectory.end(), points_global[i].timestamp,
-                                              [](TrajectoryPose lhs, double rhs) -> bool
-                                              { return lhs.timestamp_ns < rhs; });
+    //     auto lower = std::lower_bound(trajectory.begin(), trajectory.end(), points_global[i].timestamp,
+    //                                           [](TrajectoryPose lhs, double rhs) -> bool
+    //                                           { return lhs.timestamp_ns < rhs; });
 
 
-                                              //std::vector<TrajectoryPose>
-        int index_pose = std::distance(trajectory.begin(), lower) - 1;
-        if (index_pose >= 0 && index_pose < trajectory.size())
-        {
-            points_global[i].point = trajectory[index_pose].pose * points_global[i].point;
-        }
-    }
+    //                                           //std::vector<TrajectoryPose>
+    //     int index_pose = std::distance(trajectory.begin(), lower) - 1;
+    //     if (index_pose >= 0 && index_pose < trajectory.size())
+    //     {
+    //         points_global[i].point = trajectory[index_pose].pose * points_global[i].point;
+    //     }
+    // }
     
                    
-    std::cout << "transforming point to global coordinate system finished" << std::endl;
+    // std::cout << "transforming point to global coordinate system finished" << std::endl;
     std::cout << "start loading pc" << std::endl;
     std::cout << "loading pc finished" << std::endl;
 
@@ -536,7 +536,7 @@ int main(int argc, char **argv)
             return 1;
         }
 
-       outfile << "timestamp_ns, x_m, y_m, z_m, qw, qx, qy, qz" << std::endl;
+        outfile << "timestamp_nanoseconds pose00 pose01 pose02 pose03 pose10 pose11 pose12 pose13 pose20 pose21 pose22 pose23 timestampUnix_nanoseconds" << std::endl;
 
         Eigen::Vector3d trans(chunks_trajectory[i][0].x_m, chunks_trajectory[i][0].y_m, chunks_trajectory[i][0].z_m);
         Eigen::Quaterniond q(chunks_trajectory[i][0].qw, chunks_trajectory[i][0].qx, chunks_trajectory[i][0].qy, chunks_trajectory[i][0].qz);
@@ -562,28 +562,28 @@ int main(int argc, char **argv)
 
             outfile
                 << std::setprecision(20) << chunks_trajectory[i][j].timestamp_ns * 1e9 << " " << std::setprecision(10)
-                // << pose(0, 0) << " "
-                // << pose(0, 1) << " "
-                // << pose(0, 2) << " "
-                // << pose(0, 3) << " "
-                // << pose(1, 0) << " "
-                // << pose(1, 1) << " "
-                // << pose(1, 2) << " "
-                // << pose(1, 3) << " "
-                // << pose(2, 0) << " "
-                // << pose(2, 1) << " "
-                // << pose(2, 2) << " "
-                // << pose(2, 3) << " "
-                // << 0 << " "
-                // << 0 << " "
-                // << 0 << " "
-                << chunks_trajectory[i][j].x_m << " "  // x
-                << chunks_trajectory[i][j].y_m << " "  // y
-                << chunks_trajectory[i][j].z_m << " "  // z
-                << chunks_trajectory[i][j].qw << " "   // qw
-                << chunks_trajectory[i][j].qx << " "   // qx
-                << chunks_trajectory[i][j].qy << " "   // qy
-                << chunks_trajectory[i][j].qz << " "   // qz
+
+                << pose(0, 0) << " "
+                << pose(0, 1) << " "
+                << pose(0, 2) << " "
+                << pose(0, 3) << " "
+                << pose(1, 0) << " "
+                << pose(1, 1) << " "
+                << pose(1, 2) << " "
+                << pose(1, 3) << " "
+                << pose(2, 0) << " "
+                << pose(2, 1) << " "
+                << pose(2, 2) << " "
+                << pose(2, 3) << " "
+                // Position (x, y, z)
+                // << chunks_trajectory[i][j].x_m << " "  // x
+                // << chunks_trajectory[i][j].y_m << " "  // y
+                // << chunks_trajectory[i][j].z_m << " "  // z
+                // << chunks_trajectory[i][j].qw << " "   // qw
+                // << chunks_trajectory[i][j].qx << " "   // qx
+                // << chunks_trajectory[i][j].qy << " "   // qy
+                // << chunks_trajectory[i][j].qz << " "   // qz
+                << std::setprecision(20) << chunks_trajectory[i][j].timestamp_ns * 1e9 << " " << std::setprecision(10)
                 << std::endl;
         }
         outfile.close();
