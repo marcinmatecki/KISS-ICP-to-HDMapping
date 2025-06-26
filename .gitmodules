@@ -4,3 +4,6 @@
 [submodule "src/cpp_pubsub/src/3rdparty/LASzip"]
 	path = src/cpp_pubsub/src/3rdparty/LASzip
 	url = https://github.com/LASzip/LASzip.git
+[submodule "src/kiss-icp-to-hdmapping/src/3rdparty/LASzip"]
+	path = src/kiss-icp-to-hdmapping/src/3rdparty/LASzip
+	url = https://github.com/LASzip/LASzip.git

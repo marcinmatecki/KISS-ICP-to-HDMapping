@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="3">
-  <name>cpp_pubsub</name>
+  <name>kiss-icp-to-hdmapping</name>
   <version>0.0.0</version>
   <description>bag-kiss-bag-session convert</description>
 
@@ -17,8 +17,7 @@
   <depend>std_msgs</depend>
   <depend>geometry_msgs</depend>
   <depend>nav_msgs</depend>
-  <depend>sensor_msgs</depend> 
-  <depend>PCL</depend>
+  <depend>sensor_msgs</depend>
   <depend>rosbag2_cpp</depend>
   <depend>message_generation</depend>
   
