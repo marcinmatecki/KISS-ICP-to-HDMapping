@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(cpp_pubsub)
+project(kiss-icp-to-hdmapping)
 
 if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 14)
@@ -36,7 +36,7 @@ endif ()
 
 
           
-add_executable(listener src/kiss_odometry_subscriber.cpp)
+add_executable(listener src/kiss_odometry_subscriber.cpp src/laz_writer.cpp)
 
 target_link_libraries(
   listener laszip
