@@ -49,18 +49,18 @@ Download the dataset from [GitHub - ConSLAM](https://github.com/mac137/ConSLAM) 
 directly from this [Google Drive link](https://drive.google.com/drive/folders/1TNDcmwLG_P1kWPz3aawCm9ts85kUTvnU). 
 Then, download **sequence2**.
 
+## Convert(If it's a ROS1 .bag file):
+
+```shell
+rosbags-convert --src {your downloaded bag} --dst {desired destination for the converted bag}
+```
+
 ## Record the bag file:
 
 ```shell
 cd {your directory for the bag}
 ros2 bag record /kiss/local_map /kiss/odometry -o {your directory for the recorded bag}
 and start odometry:
-```
-
-## Convert(If it's a ROS1 .bag file):
-
-```shell
-rosbags-convert --src {your downloaded bag} --dst {desired destination for the converted bag}
 ```
 
 ## Kiss Launch:
