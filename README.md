@@ -60,7 +60,6 @@ rosbags-convert --src {your downloaded bag} --dst {desired destination for the c
 ```shell
 cd {your directory for the bag}
 ros2 bag record /kiss/local_map /kiss/odometry -o {your directory for the recorded bag}
-and start odometry:
 ```
 
 ## Kiss Launch:
