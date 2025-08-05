@@ -43,6 +43,9 @@ source ./install/setup.sh # adjust to used shell
 ros2 run kiss-icp-to-hdmapping listener <recorded_bag> <output_dir>
 ```
 
+
+
+
 ## Example:
 
 Download the dataset from [GitHub - ConSLAM](https://github.com/mac137/ConSLAM) or 
