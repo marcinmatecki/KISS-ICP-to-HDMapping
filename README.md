@@ -46,9 +46,11 @@ ros2 run kiss-icp-to-hdmapping listener <recorded_bag> <output_dir>
 
 ## Example:
 
-```shell
-Download the dataset from [GitHub - ConSLAM](https://github.com/mac137/ConSLAM) or directly from this [Google Drive link](https://drive.google.com/drive/folders/1TNDcmwLG_P1kWPz3aawCm9ts85kUTvnU). Then, download **sequence2**.
+Download the dataset from [GitHub - ConSLAM](https://github.com/mac137/ConSLAM) or 
+directly from this [Google Drive link](https://drive.google.com/drive/folders/1TNDcmwLG_P1kWPz3aawCm9ts85kUTvnU). 
+Then, download **sequence2**.
 
+```shell
 ##Record the bag file
 ##RECORD:
 
