@@ -52,18 +52,19 @@ Then, download **sequence2**.
 ## Record the bag file:
 
 ```shell
-RECORD:
 cd {your directory for the bag}
 ros2 bag record /kiss/local_map /kiss/odometry -o {your directory for the recorded bag}
 and start odometry:
 ```
 
 ## Convert(If it's a ROS1 .bag file):
+
 ```shell
 rosbags-convert --src {your downloaded bag} --dst {desired destination for the converted bag}
 ```
 
 ## Kiss Launch:
+
 ```shell
 cd /test_ws/
 source ./install/setup.sh # adjust to used shell
@@ -71,16 +72,15 @@ ros2 launch kiss_icp odometry.launch.py bagfile:={path_to_bag_file} topic:=pp_po
 ```
 
 ## During the record (if you want to stop recording earlier) / after finishing the bag:
+
 ```shell
 In the terminal where the ros record is, interrupt the recording by CTRL+C
 Do it also in ros launch terminal by CTRL+C.
 ```
 
-## Usage - conversion(rosbag - to - hdmapping):
+## Usage - Conversion (ROS bag to HDMapping, after recording stops):
 
 ```shell
-AFTER STOP RECORDING:
-
 cd /test_ws/
 source ./install/setup.sh # adjust to used shell
 ros2 run kiss-icp-to-hdmapping listener <recorded_bag> <output_dir>
