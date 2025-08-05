@@ -43,3 +43,38 @@ cd /test_ws/
 source ./install/setup.sh # adjust to used shell
 ros2 run kiss-icp-to-hdmapping listener <recorded_bag> <output_dir>
 ```
+
+## Example:
+
+```shell
+Download the dataset from [GitHub - ConSLAM](https://github.com/mac137/ConSLAM) or directly from this [Google Drive link](https://drive.google.com/drive/folders/1TNDcmwLG_P1kWPz3aawCm9ts85kUTvnU). Then, download **sequence2**.
+
+##Record the bag file
+##RECORD:
+
+cd {your directory for the bag}
+ros2 bag record /kiss/local_map /kiss/odometry -o {your directory for the recorded bag}
+and start odometry:
+
+#CONVERT(if ros1 bag)
+rosbags-convert --src {your downloaded bag} --dst {desired destination for the converted bag}
+
+##KISS LAUNCH:
+
+cd /test_ws/
+source ./install/setup.sh # adjust to used shell
+ros2 launch kiss_icp odometry.launch.py bagfile:={path_to_bag_file} topic:=pp_points/synced2rgb
+
+#DURING THE RECORD(IF U WANT STOP RECORDING EARLIER)/AFTER FINISHING THE BAG
+In the terminal where the ros record is, interrupt the recording by CTRL+C
+Do it also in ros launch terminal by CTRL+C.
+
+##Usage - conversion
+##AFTER STOP RECORDING:
+
+//- rosbag - to - hdmapping
+
+cd /test_ws/
+source ./install/setup.sh # adjust to used shell
+ros2 run kiss-icp-to-hdmapping listener <recorded_bag> <output_dir>
+```
