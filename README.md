@@ -58,19 +58,19 @@ ros2 bag record /kiss/local_map /kiss/odometry -o {your directory for the record
 and start odometry:
 ```
 
-## CONVERT(If it's a ROS1 .bag file):
+## Convert(If it's a ROS1 .bag file):
 ```shell
 rosbags-convert --src {your downloaded bag} --dst {desired destination for the converted bag}
 ```
 
-## KISS LAUNCH:
+## Kiss Launch:
 ```shell
 cd /test_ws/
 source ./install/setup.sh # adjust to used shell
 ros2 launch kiss_icp odometry.launch.py bagfile:={path_to_bag_file} topic:=pp_points/synced2rgb
 ```
 
-## DURING THE RECORD(IF U WANT STOP RECORDING EARLIER)/AFTER FINISHING THE BAG:
+## During the record (if you want to stop recording earlier) / after finishing the bag:
 ```shell
 In the terminal where the ros record is, interrupt the recording by CTRL+C
 Do it also in ros launch terminal by CTRL+C.
