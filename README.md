@@ -43,9 +43,6 @@ source ./install/setup.sh # adjust to used shell
 ros2 run kiss-icp-to-hdmapping listener <recorded_bag> <output_dir>
 ```
 
-
-
-
 ## Example:
 
 Download the dataset from [GitHub - ConSLAM](https://github.com/mac137/ConSLAM) or 
@@ -55,14 +52,13 @@ Then, download **sequence2**.
 ## Convert(If it's a ROS1 .bag file):
 
 ```shell
-rosbags-convert --src {your downloaded bag} --dst {desired destination for the converted bag}
+rosbags-convert --src {your_downloaded_bag} --dst {desired_destination_for_the_converted_bag}
 ```
 
 ## Record the bag file:
 
 ```shell
-cd {your directory for the bag}
-ros2 bag record /kiss/local_map /kiss/odometry -o {your directory for the recorded bag}
+ros2 bag record /kiss/local_map /kiss/odometry -o {your_directory_for_the_recorded_bag}
 ```
 
 ## Kiss Launch:
