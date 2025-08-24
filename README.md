@@ -14,7 +14,7 @@ Clone the repo
 ```shell
 mkdir -p /test_ws/src
 cd /test_ws/src
-git clone https://github.com/marcinmatecki/kiss-icp-to-hdmapping.git --recursive
+git clone https://github.com/marcinmatecki/KISS-ICP-to-HDMapping.git --recursive
 cd ..
 colcon build
 ```
